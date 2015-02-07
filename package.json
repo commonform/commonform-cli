@@ -23,6 +23,7 @@
     "commonform-terminal": ">0.1.0 <0.2.0",
     "commonform-validate": "0.1.x",
     "concat-stream": "^1.4.7",
+    "configstore": "^0.3.2",
     "docopt": "^0.4.1",
     "glob": "^4.3.5",
     "inquirer": "^0.8.0",
@@ -30,7 +31,6 @@
     "ssl-root-cas": "^1.1.7",
     "statuses": "^1.2.1",
     "through2": "^0.6.3",
-    "user-home": "^1.1.1",
     "util-extend": "^1.0.1",
     "util-merge": "^1.0.0",
     "validator": "^3.28.0"

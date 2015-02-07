@@ -5,7 +5,7 @@ var validate = require('commonform-validate');
 var validator = require('validator');
 
 var configuration = require('./configuration');
-var libraries = configuration.libraries;
+var libraries = configuration.get('libraries');
 var libraryNames = Object.keys(libraries);
 var librariesLength = libraryNames.length;
 
