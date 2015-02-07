@@ -1,24 +1,11 @@
-Common Form Command Line Interface
+Common Form command line interface
 
 Usage:
-  commonform bookmark <name> <digest> [-v <version>]
-  commonform complete [<id>]
-  commonform docx
-  commonform get [<id>]
-  commonform hash
-  commonform libraries
-  commonform lint
-  commonform markup
-  commonform normalize
-  commonform project <title> [-p <prefs>] [(-f <fields> | -i)]
-  commonform serialize
-  commonform share
-  commonform validate
+  commonform read REFERENCE [options]
   commonform -h | --help
   commonform --version
 
 Options:
-  -f <fields>, --fields <fields>     JSON project field values file
-  -l <library>, --library <library>  The Common Form library to use
-  -p <prefs>, --preferences <prefs>  JSON project preferences file
-  -v <version>                       Bookmark version
+  --color                     Force color terminal output
+  -f FORMAT, --format FORMAT  Output format [default: terminal]
+  -l LIB, --library LIB       The library to use

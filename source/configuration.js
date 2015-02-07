@@ -4,11 +4,15 @@ var fs = require('fs');
 var home = require('user-home');
 var extend = require('util-extend');
 
-var defaults = {servers: []};
+var defaults = {
+  libraries: []
+};
 
-module.exports = extend(
-  defaults,
-  JSON.parse(fs.readFileSync(
-    fs.realpathSync(path.join(home, '.commonform.json'))
-  ).toString())
-);
+var file = path.join(home, '.commonform.json');
+try {
+  var realpath = fs.realpathSync(file);
+  var content = fs.readFileSync(realpath).toString();
+  module.exports = extend(defaults, JSON.parse(content));
+} catch (e) {
+  module.exports = defaults;
+}
