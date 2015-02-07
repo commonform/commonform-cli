@@ -13,7 +13,7 @@
   "bugs": "https://github.com/commonform/commonform-cli/issues",
   "dependencies": {
     "JSONStream": "^0.10.x",
-    "commonform-analyze": ">=0.1.1 < 0.2.0",
+    "commonform-analyze": "^0.1.1",
     "commonform-docx": "^0.1.1",
     "commonform-hash": "0.1.x",
     "commonform-lint": "^0.1.0",

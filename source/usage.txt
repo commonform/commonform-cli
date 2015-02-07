@@ -2,6 +2,7 @@ Common Form command line interface
 
 Usage:
   commonform bookmark BOOKMARK REFERENCE
+  commonform complete REFERENCE FILE [options]
   commonform check REFERENCE
   commonform fingerprint REFERENCE [options]
   commonform share REFERENCE [options]

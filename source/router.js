@@ -2,6 +2,7 @@ var processOptions = require('./process-options');
 
 var subcommands = [
   'bookmark',
+  'complete',
   'check',
   'fingerprint',
   'read',

@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var validate = require('commonform-validate');
 var hash = require('commonform-hash');
 
@@ -101,6 +102,10 @@ module.exports = function(options) {
     } else {
       fail('Invalid bookmark name, "' + mark + '"');
     }
+  }
+
+  if (options.FILE) {
+    options.file = path.resolve(options.FILE);
   }
 
   return options;
