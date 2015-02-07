@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+var path = require('path');
+var fs = require('fs');
+var lib = path.join(
+  path.dirname(fs.realpathSync(__filename)),
+  '..', 'source', 'command-line-interface.js'
+);
+require(lib)(process.argv.slice(2));
