@@ -1,6 +1,10 @@
 var processOptions = require('./process-options');
 
-var subcommands = ['read'];
+var subcommands = [
+  'read',
+  'fingerprint',
+  'share'
+];
 
 module.exports = function(options) {
   var length = subcommands.length;

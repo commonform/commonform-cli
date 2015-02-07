@@ -3,8 +3,8 @@ var fs = require('fs');
 var request = require('request');
 var statuses = require('statuses');
 var markup = require('commonform-markup');
+var hash = require('commonform-hash');
 var serialize = require('commonform-serialize');
-var projectify = require('../projectify');
 
 var selectLibrary = require('../select-library');
 
@@ -14,7 +14,7 @@ var formHandler = function(options, error, response, body) {
   } else {
     var status = response.statusCode;
     if (status === 200) {
-      process.stdout.write(options.format(body));
+      process.stdout.write(hash.hash(body) + '\n');
       process.exit(0);
     } else {
       process.stdout.write(statuses[status] + '\n');
@@ -31,7 +31,6 @@ module.exports = function(options) {
         method: 'GET',
         url: library.protocol + '//' + library.host +
           '/forms/' + ref.digest,
-        qs: {denormalized: 'true'},
         json: true,
         rejectUnauthorized: false,
         auth: library.auth
@@ -55,9 +54,8 @@ module.exports = function(options) {
         } else if (status === 301) {
           request({
             method: 'GET',
-            url: library.prococol + '//' + library.host +
+            url: library.protocol + '//' + library.host +
               response.headers.location,
-            qs: {denormalized: 'true'},
             json: true,
             rejectUnauthorized: false,
             auth: library.auth
@@ -76,8 +74,11 @@ module.exports = function(options) {
           serialize.parse.bind(serialize) :
           markup.parseLines.bind(markup);
         try {
-          var project = projectify(parser(content));
-          process.stdout.write(options.format(project));
+          var form = parser(content);
+          if (form.hasOwnProperty('form')) {
+            form = form.form;
+          }
+          process.stdout.write(hash.hash(form) + '\n');
           process.exit(0);
         } catch (e) {
           console.error(e);

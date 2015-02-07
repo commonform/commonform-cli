@@ -11,7 +11,7 @@ var FORMATTERS = {
       return format(projectify(object));
     };
   },
-  json: function() {
+  native: function() {
     return require('commonform-serialize').stringify;
   },
   markup: function() {
@@ -19,7 +19,7 @@ var FORMATTERS = {
     return function(object) {
       return markup.toMarkup(
         object.hasOwnProperty('form') ? object.form : object
-      );
+      ) + '\n';
     };
   }
 };
@@ -27,24 +27,28 @@ var FORMATTERS = {
 module.exports = function(options) {
   // REFERENCE
   if (options.REFERENCE) {
-    var split;
-    var ref = options.REFERENCE;
-    try {
-      options.reference = {file: fs.realpathSync(ref)};
-    } catch (e) {
-      if (hash.isDigest(ref)) {
-        options.reference = {digest: ref};
-      } else if (validate.bookmarkName(ref)) {
-        options.reference = {bookmark: ref, version: 'latest'};
-      } else if (
-        (split = ref.split('@')) &&
-        validate.bookmarkName(split[0]) &&
-        validate.version(split[1])
-      ) {
-        options.reference = {bookmark: split[0], version: split[1]};
-      } else {
-        process.stdout.write('Invalid reference, "' + ref + '"');
-        process.exit(1);
+    if (options.REFERENCE === '-') {
+      options.reference = {file: '/dev/stdin'};
+    } else {
+      var split;
+      var ref = options.REFERENCE;
+      try {
+        options.reference = {file: fs.realpathSync(ref)};
+      } catch (e) {
+        if (hash.isDigest(ref)) {
+          options.reference = {digest: ref};
+        } else if (validate.bookmarkName(ref)) {
+          options.reference = {bookmark: ref, version: 'latest'};
+        } else if (
+          (split = ref.split('@')) &&
+          validate.bookmarkName(split[0]) &&
+          validate.version(split[1])
+        ) {
+          options.reference = {bookmark: split[0], version: split[1]};
+        } else {
+          process.stdout.write('Invalid reference, "' + ref + '"');
+          process.exit(1);
+        }
       }
     }
   }

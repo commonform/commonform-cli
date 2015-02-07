@@ -6,7 +6,8 @@ var validator = require('validator');
 
 var configuration = require('./configuration');
 var libraries = configuration.libraries;
-var librariesLength = libraries.length;
+var libraryNames = Object.keys(libraries);
+var librariesLength = libraryNames.length;
 
 var splitAuth = function(url) {
   var split = url.auth.split(':');
@@ -27,7 +28,7 @@ module.exports = function(options, callback) {
     }
   } else if (librariesLength === 1) {
     callback(
-      splitAuth(url.parse(libraries[Object.keys(libraries)[0]]))
+      splitAuth(url.parse(libraries[libraryNames[0]]))
     );
   } else if (librariesLength === 0) {
     inquirer.prompt([
@@ -55,13 +56,14 @@ module.exports = function(options, callback) {
           user: answers.user,
           password: answers.password
         },
+        protocol: 'https:',
         port: answers.port,
         hostname: answers.hostname
       }));
     });
   } else {
     inquirer.prompt([{
-      choices: Object.keys(libraries),
+      choices: libraryNames,
       default: 0,
       message: 'Which library would you like to use?',
       name: 'library',
