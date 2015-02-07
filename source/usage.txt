@@ -1,6 +1,7 @@
 Common Form command line interface
 
 Usage:
+  commonform check REFERENCE
   commonform fingerprint REFERENCE [options]
   commonform share REFERENCE [options]
   commonform read REFERENCE [options]

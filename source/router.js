@@ -1,8 +1,9 @@
 var processOptions = require('./process-options');
 
 var subcommands = [
-  'read',
+  'check',
   'fingerprint',
+  'read',
   'share'
 ];
 
