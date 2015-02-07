@@ -55,7 +55,7 @@ module.exports = function(options) {
         } else if (status === 301) {
           request({
             method: 'GET',
-            url: library.prococol + '//' + library.host +
+            url: library.protocol + '//' + library.host +
               response.headers.location,
             qs: {denormalized: 'true'},
             json: true,

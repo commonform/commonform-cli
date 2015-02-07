@@ -4,6 +4,11 @@ var hash = require('commonform-hash');
 
 var projectify = require('./projectify');
 
+var fail = function(message) {
+  process.stderr.write(message + '\n');
+  process.exit(1);
+};
+
 var FORMATTERS = {
   terminal: function() {
     var format = require('commonform-terminal');
@@ -30,7 +35,7 @@ module.exports = function(options) {
     if (options.REFERENCE === '-') {
       options.reference = {file: '/dev/stdin'};
     } else {
-      var split;
+      var referenceSplit;
       var ref = options.REFERENCE;
       try {
         options.reference = {file: fs.realpathSync(ref)};
@@ -40,14 +45,16 @@ module.exports = function(options) {
         } else if (validate.bookmarkName(ref)) {
           options.reference = {bookmark: ref, version: 'latest'};
         } else if (
-          (split = ref.split('@')) &&
-          validate.bookmarkName(split[0]) &&
-          validate.version(split[1])
+          (referenceSplit = ref.split('@')) &&
+          validate.bookmarkName(referenceSplit[0]) &&
+          validate.version(referenceSplit[1])
         ) {
-          options.reference = {bookmark: split[0], version: split[1]};
+          options.reference = {
+            bookmark: referenceSplit[0],
+            version: referenceSplit[1]
+          };
         } else {
-          process.stdout.write('Invalid reference, "' + ref + '"');
-          process.exit(1);
+          fail('Invalid reference, "' + ref + '"');
         }
       }
     }
@@ -61,11 +68,33 @@ module.exports = function(options) {
     var valid = Object.keys(FORMATTERS).map(function(f) {
       return '"' + f + '"';
     }).join(', ');
-    process.stderr.write(
+    fail(
       'Invalid format, "' + format + '". ' +
       'Valid formats are ' + valid + '.\n'
     );
-    process.exit(1);
+  }
+
+  // BOOKMARK
+  if (options.BOOKMARK) {
+    var mark = options.BOOKMARK;
+    if (validate.bookmarkName(mark)) {
+      options.bookmark = {name: mark};
+    } else if (mark.indexOf('@') > -1) {
+      var bookmarkSplit = mark.split('@');
+      if (
+        validate.bookmarkName(bookmarkSplit[0]) &&
+        validate.version(bookmarkSplit[1])
+      ) {
+        options.bookmark = {
+          name: bookmarkSplit[0],
+          version: bookmarkSplit[1]
+        };
+      } else {
+        fail('Invalid bookmark name, "' + mark + '"');
+      }
+    } else {
+      fail('Invalid bookmark name, "' + mark + '"');
+    }
   }
 
   return options;
