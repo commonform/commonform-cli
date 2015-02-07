@@ -26,6 +26,12 @@ var FORMATTERS = {
         object.hasOwnProperty('form') ? object.form : object
       ) + '\n';
     };
+  },
+  docx: function() {
+    var format = require('commonform-docx');
+    return function(object) {
+      return format(projectify(object)).generate({type: 'nodebuffer'});
+    };
   }
 };
 

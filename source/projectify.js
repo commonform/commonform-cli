@@ -4,7 +4,7 @@ module.exports = function(object) {
   if (validate.nestedForm(object)) {
     return {
       commonform: validate.version,
-      metadata: {title: 'Untitled Project'},
+      metadata: {title: 'Untitled'},
       preferences: {},
       values: {},
       form: object
