@@ -12,7 +12,6 @@ module.exports = function(values, callback) {
     };
   });
   inquirer.prompt(questions, function(answers) {
-    console.error(answers);
     callback(Object.keys(answers).reduce(function(values, name) {
       if (answers[name] !== undefined) {
         values[name] = answers[name];
