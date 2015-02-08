@@ -17,7 +17,8 @@ var VERSION = 'commonform-cli ' + meta.version + ' (' +
         ' ' +
         require(dependency).version;
     })
-    .join(', ');
+    .join(', ') +
+    ')';
 
 module.exports = function(argv) {
   var options = require('docopt').docopt(
