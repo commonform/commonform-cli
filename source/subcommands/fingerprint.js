@@ -5,16 +5,20 @@ var statuses = require('statuses');
 var markup = require('commonform-markup');
 var hash = require('commonform-hash');
 var serialize = require('commonform-serialize');
+var normalize = require('commonform-normalize');
 
 var selectLibrary = require('../select-library');
 
-var formHandler = function(options, error, response, body) {
+var handle = function(options, error, response, body) {
   if (error) {
     console.error(error);
+    process.exit(1);
   } else {
     var status = response.statusCode;
     if (status === 200) {
-      process.stdout.write(hash.hash(body) + '\n');
+      var n = normalize(body);
+      var last = n[n.length - 1];
+      process.stdout.write(hash.hash(last));
       process.exit(0);
     } else {
       process.stdout.write(statuses[status] + '\n');
@@ -34,7 +38,7 @@ module.exports = function(options) {
         json: true,
         rejectUnauthorized: false,
         auth: library.auth
-      }, formHandler.bind(this, options));
+      }, handle.bind(this, options));
     });
   } else if (ref.bookmark) {
     selectLibrary(options, function(library) {
@@ -59,7 +63,7 @@ module.exports = function(options) {
             json: true,
             rejectUnauthorized: false,
             auth: library.auth
-          }, formHandler.bind(this, options));
+          }, handle.bind(this, options));
         } else {
           process.stdout.write(statuses[status] + '\n');
           process.exit(1);
@@ -78,8 +82,7 @@ module.exports = function(options) {
           if (form.hasOwnProperty('form')) {
             form = form.form;
           }
-          process.stdout.write(hash.hash(form) + '\n');
-          process.exit(0);
+          handle(options, null, {statusCode: 200}, form);
         } catch (e) {
           console.error(e);
           process.exit(1);
