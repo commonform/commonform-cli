@@ -21,7 +21,7 @@
     "commonform-normalize": ">0.1.0 <0.2.0",
     "commonform-serialize": "0.1.x",
     "commonform-terminal": ">0.1.0 <0.2.0",
-    "commonform-validate": "0.1.x",
+    "commonform-validate": ">0.1.0 <0.2.0",
     "concat-stream": "^1.4.7",
     "configstore": "^0.3.2",
     "docopt": "^0.4.1",

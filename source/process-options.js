@@ -90,7 +90,7 @@ module.exports = function(options) {
       var bookmarkSplit = mark.split('@');
       if (
         validate.bookmarkName(bookmarkSplit[0]) &&
-        validate.version(bookmarkSplit[1])
+        validate.semanticVersion(bookmarkSplit[1])
       ) {
         options.bookmark = {
           name: bookmarkSplit[0],
