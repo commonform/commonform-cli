@@ -54,7 +54,7 @@ module.exports = function(options) {
         } else if (
           (referenceSplit = ref.split('@')) &&
           validate.bookmarkName(referenceSplit[0]) &&
-          validate.version(referenceSplit[1])
+          validate.semanticVersion(referenceSplit[1])
         ) {
           options.reference = {
             bookmark: referenceSplit[0],
