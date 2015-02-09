@@ -7,6 +7,7 @@ Usage:
   commonform fingerprint REFERENCE [-l LIB]
   commonform read REFERENCE [options]
   commonform share REFERENCE [-l LIB]
+  commonform summarize REFERENCE [options]
   commonform -h | --help
   commonform --version
 

@@ -6,7 +6,8 @@ var subcommands = [
   'check',
   'fingerprint',
   'read',
-  'share'
+  'share',
+  'summarize'
 ];
 
 module.exports = function(options) {
