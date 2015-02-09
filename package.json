@@ -1,7 +1,7 @@
 {
   "name": "commonform-cli",
   "description": "Common Form command-line interface",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Kyle E. Mitchell",
     "email": "kyle@kemitchell.com",
