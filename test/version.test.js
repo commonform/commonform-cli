@@ -7,7 +7,7 @@ var cli = require('..');
 
 describe('Version', function() {
   describe('commonform --version', function() {
-    var inputs = {args:['--version']};
+    var inputs = {argv:['--version']};
 
     it('writes the package version to standard output', function(done) {
       invoke(cli, inputs, function(outputs) {
@@ -25,7 +25,7 @@ describe('Version', function() {
   });
 
   describe('commonform -v', function() {
-    var inputs = {args:['-v']};
+    var inputs = {argv:['-v']};
 
     it('writes the package version to standard output', function(done) {
       invoke(cli, inputs, function(outputs) {

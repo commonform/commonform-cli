@@ -5,7 +5,7 @@ var cli = require('..');
 
 describe('Usage', function() {
   describe('commonform --help', function() {
-    var inputs = {args:['--help']};
+    var inputs = {argv:['--help']};
 
     it('writes usage to standard output', function(done) {
       invoke(cli, inputs, function(outputs) {
@@ -23,7 +23,7 @@ describe('Usage', function() {
   });
 
   describe('commonform -h', function() {
-    var inputs = {args:['-h']};
+    var inputs = {argv:['-h']};
 
     it('writes usage to standard output', function(done) {
       invoke(cli, inputs, function(outputs) {
@@ -41,7 +41,7 @@ describe('Usage', function() {
   });
 
   describe('commonform --usage', function() {
-    var inputs = {args:['--usage']};
+    var inputs = {argv:['--usage']};
 
     it('writes usage to standard output', function(done) {
       invoke(cli, inputs, function(outputs) {
@@ -77,7 +77,7 @@ describe('Usage', function() {
   });
 
   describe('commonform (with bogus arguments)', function() {
-    var inputs = {args: ['bogus']};
+    var inputs = {argv: ['bogus']};
 
     it('writes usage on standard error', function(done) {
       invoke(cli, inputs, function(outputs) {

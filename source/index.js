@@ -2,11 +2,11 @@ var docopt = require('docopt');
 var route = require('./route');
 var usage = require('./usage');
 
-module.exports = function(stdin, stdout, stderr, env, args, callback) {
+module.exports = function(stdin, stdout, stderr, env, argv, callback) {
   var options;
   try {
     options = docopt.docopt(usage, {
-      argv: args,
+      argv: argv,
       help: false,
       exit: false
     });

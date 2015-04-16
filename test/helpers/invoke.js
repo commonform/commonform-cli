@@ -9,7 +9,7 @@ module.exports = function(cli, customInputs, callback) {
     stdout: new WritableStreamBuffer(),
     stderr: new WritableStreamBuffer(),
     env: {},
-    args: []
+    argv: []
   };
   assign(inputs, customInputs);
   cli(
@@ -17,7 +17,7 @@ module.exports = function(cli, customInputs, callback) {
     inputs.stdout,
     inputs.stderr,
     inputs.env,
-    inputs.args,
+    inputs.argv,
     function(status) {
       inputs.stdout.end();
       inputs.stderr.end();
