@@ -10,7 +10,7 @@ module.exports = function(format) {
   } else if (format === 'terminal') {
     var terminal = require('commonform-terminal');
     return function(argument) {
-      return terminal(argument, {});
+      return terminal(argument, {}) + '\n';
     };
   } else {
     return ['markup', 'native', 'terminal'];
