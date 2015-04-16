@@ -13,8 +13,3 @@ On the command line, with [Node.js](http://nodejs.org/) and [npm](https://npmjs.
 npm --global install commonform-cli
 commonform --help
 ```
-
-License
--------
-
-[Apache License Version 2.0](./LICENSE.md)
