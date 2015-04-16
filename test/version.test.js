@@ -22,4 +22,18 @@ describe('Version', function() {
       });
     });
   });
+
+  describe('commonform -v', function() {
+    it('shows the package version', function(done) {
+      var output = new WritableStreamBuffer();
+      var args = ['-v'];
+      cli(null, output, null, emptyEnv, args, function(exitCode) {
+        expect(exitCode)
+          .to.equal(0);
+        expect(output.getContentsAsString('utf8'))
+          .to.equal(meta.version + '\n');
+        done();
+      });
+    });
+  });
 });
