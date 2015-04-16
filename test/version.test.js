@@ -1,7 +1,8 @@
 /* jshint mocha: true */
 var expect = require('chai').expect;
 var invoke = require('./helpers/invoke');
-var version = require('../package.json').version;
+var meta = require('../package.json');
+var version = meta.name + ' ' + meta.version;
 var cli = require('..');
 
 describe('Version', function() {
