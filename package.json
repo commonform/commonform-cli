@@ -1,45 +1,24 @@
 {
   "name": "commonform-cli",
   "description": "Common Form command-line interface",
-  "version": "0.1.2",
+  "version": "0.4.0-prerelease",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bin": {
     "commonform": "./bin/commonform"
   },
   "bugs": "https://github.com/commonform/commonform-cli/issues",
-  "dependencies": {
-    "JSONStream": "^0.10.x",
-    "commonform-analyze": "^0.1.1",
-    "commonform-docx": "^0.1.1",
-    "commonform-hash": "0.1.x",
-    "commonform-lint": "^0.1.0",
-    "commonform-markup": "0.1.x",
-    "commonform-normalize": ">0.1.0 <0.2.0",
-    "commonform-serialize": "0.1.x",
-    "commonform-terminal": ">0.1.0 <0.2.0",
-    "commonform-validate": ">0.1.0 <0.2.0",
-    "concat-stream": "^1.4.7",
-    "configstore": "^0.3.2",
-    "docopt": "^0.4.1",
-    "glob": "^4.3.5",
-    "inquirer": "^0.8.0",
-    "request": "^2.53.0",
-    "ssl-root-cas": "^1.1.7",
-    "statuses": "^1.2.1",
-    "through2": "^0.6.3",
-    "util-extend": "^1.0.1",
-    "util-merge": "^1.0.0",
-    "validator": "^3.28.0"
-  },
   "devDependencies": {
     "chai": "^2.2.0",
-    "istanbul": "^0.3.5",
-    "jscs": "^1.10.0",
-    "jshint": "^2.5.11",
-    "mocha": "^2.1.0"
+    "concat-stream": "^1.4.8",
+    "istanbul": "^0.3.13",
+    "jscs": "^1.12.0",
+    "jshint": "^2.7.0",
+    "mocha": "^2.2.4",
+    "stream-buffers": "^2.1.0"
   },
   "homepage": "https://commonform.github.io",
   "license": "Apache-2.0",
+  "main": "source/index",
   "preferGlobal": true,
   "repository": "commonform/commonform-cli",
   "scripts": {
