@@ -9,6 +9,7 @@
   "bugs": "https://github.com/commonform/commonform-cli/issues",
   "dependencies": {
     "commonform-markup": "^0.4.0",
+    "commonform-normalize": "^0.4.0",
     "commonform-serialize": "^0.4.0",
     "commonform-terminal": "^0.4.1",
     "concat-stream": "^1.4.8",

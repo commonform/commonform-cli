@@ -5,13 +5,17 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
       stdout.write(meta.name + ' ' + meta.version + '\n');
       callback(0);
     };
+  } else if (opt.hash) {
+    return function(callback) {
+      require('./read-form')(stdin, opt, function(error, form) {
+        var normalized = require('commonform-normalize')(form);
+        stdout.write(normalized.root + '\n');
+        callback(0);
+      });
+    };
   } else if (opt.read) {
     return function(callback) {
-      var serialize = require('commonform-serialize');
-      var concat = require('concat-stream');
-      stdin.pipe(concat(function(buffer) {
-        var input = buffer.toString();
-        var form = serialize.parse(input);
+      require('./read-form')(stdin, opt, function(error, form) {
         var format = opt['--format'];
         var transform = require('./transform-for-format')(format);
         if (typeof transform === 'function') {
@@ -28,7 +32,7 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
           ].join('\n') + '\n');
           callback(1);
         }
-      }));
+      });
     };
   } else {
     return undefined;

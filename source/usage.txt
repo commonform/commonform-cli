@@ -3,6 +3,7 @@ Compose, verify, and share form contracts
 Usage:
   commonform [--usage]
   commonform read [options]
+  commonform hash
   commonform --help | -h
   commonform --version | -v
 
