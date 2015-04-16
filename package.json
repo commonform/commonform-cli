@@ -1,6 +1,6 @@
 {
   "name": "commonform-cli",
-  "description": "Common Form command-line interface",
+  "description": "compose, verify, and share form contracts at the command line",
   "version": "0.4.0-prerelease",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (http://kemitchell.com)",
   "bin": {
