@@ -1,7 +1,10 @@
+var expect = require('chai').expect;
 var assign = require('object-assign');
 var streambuffers = require('stream-buffers');
 var WritableStreamBuffer = streambuffers.WritableStreamBuffer;
 var ReadableStreamBuffer = streambuffers.ReadableStreamBuffer;
+
+var streams = ['stdin', 'stdout', 'stderr'];
 
 module.exports = function(cli, customInputs, callback) {
   var inputs = {
@@ -12,6 +15,14 @@ module.exports = function(cli, customInputs, callback) {
     argv: []
   };
   assign(inputs, customInputs);
+  streams.forEach(function(key) {
+    if (typeof inputs[key] === 'function') {
+      inputs[key] = inputs[key]();
+    }
+    inputs[key].end = function() {
+      expect.fail(0, 1, '.end() was called on ' + key);
+    };
+  });
   cli(
     inputs.stdin,
     inputs.stdout,
@@ -19,8 +30,6 @@ module.exports = function(cli, customInputs, callback) {
     inputs.env,
     inputs.argv,
     function(status) {
-      inputs.stdout.end();
-      inputs.stderr.end();
       callback({
         status: status,
         stdout: inputs.stdout.getContentsAsString('utf8'),
