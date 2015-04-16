@@ -17,3 +17,8 @@ commonform --help
 ```
 
 `commonform-cli` is tested on several versions of [node.js](https://nodejs.org) and [io.js](https://iojs.org). Please see the [Travis CI configuration file](./.travis.yml).
+
+Related Projects
+----------------
+
+For [Vim](https://github.com/commonform/vim-commonform) users there is also [vim-commonform](https://github.com/commonform/vim-commonform), which provides syntax highlighting and other conveniences for Common Form markup.
