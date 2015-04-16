@@ -8,7 +8,12 @@
   },
   "bugs": "https://github.com/commonform/commonform-cli/issues",
   "dependencies": {
-    "docopt": "^0.6.2"
+    "commonform-markup": "^0.4.0",
+    "commonform-serialize": "^0.4.0",
+    "commonform-terminal": "^0.4.1",
+    "concat-stream": "^1.4.8",
+    "docopt": "^0.6.2",
+    "english-list": "^1.0.0-prerelease-1"
   },
   "devDependencies": {
     "chai": "^2.2.0",

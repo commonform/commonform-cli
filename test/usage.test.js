@@ -4,7 +4,7 @@ var invoke = require('./helpers/invoke');
 var cli = require('..');
 
 describe('Usage', function() {
-  describe('commonform --help', function() {
+  describe('--help', function() {
     var inputs = {argv:['--help']};
 
     it('writes usage to standard output', function(done) {
@@ -14,7 +14,7 @@ describe('Usage', function() {
       });
     });
 
-    it('exits with code 0', function(done) {
+    it('exits with status 0', function(done) {
       invoke(cli, inputs, function(outputs) {
         expect(outputs.status).to.equal(0);
         done();
@@ -22,7 +22,7 @@ describe('Usage', function() {
     });
   });
 
-  describe('commonform -h', function() {
+  describe('-h', function() {
     var inputs = {argv:['-h']};
 
     it('writes usage to standard output', function(done) {
@@ -32,7 +32,7 @@ describe('Usage', function() {
       });
     });
 
-    it('exits with code 0', function(done) {
+    it('exits with status 0', function(done) {
       invoke(cli, inputs, function(outputs) {
         expect(outputs.status).to.equal(0);
         done();
@@ -40,7 +40,7 @@ describe('Usage', function() {
     });
   });
 
-  describe('commonform --usage', function() {
+  describe('--usage', function() {
     var inputs = {argv:['--usage']};
 
     it('writes usage to standard output', function(done) {
@@ -50,7 +50,7 @@ describe('Usage', function() {
       });
     });
 
-    it('exits with code 0', function(done) {
+    it('exits with status 0', function(done) {
       invoke(cli, inputs, function(outputs) {
         expect(outputs.status).to.equal(0);
         done();
@@ -58,7 +58,7 @@ describe('Usage', function() {
     });
   });
 
-  describe('commonform (without arguments)', function() {
+  describe('(without arguments)', function() {
     var inputs = {};
 
     it('writes usage to standard output', function(done) {
@@ -68,7 +68,7 @@ describe('Usage', function() {
       });
     });
 
-    it('exits with code 0', function(done) {
+    it('exits with status 0', function(done) {
       invoke(cli, inputs, function(outputs) {
         expect(outputs.status).to.equal(0);
         done();
@@ -76,7 +76,7 @@ describe('Usage', function() {
     });
   });
 
-  describe('commonform (with bogus arguments)', function() {
+  describe('(with bogus arguments)', function() {
     var inputs = {argv: ['bogus']};
 
     it('writes usage on standard error', function(done) {
@@ -86,7 +86,7 @@ describe('Usage', function() {
       });
     });
 
-    it('exits with code 1', function(done) {
+    it('exits with status 1', function(done) {
       invoke(cli, inputs, function(outputs) {
         expect(outputs.status).to.equal(1);
         done();

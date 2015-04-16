@@ -1,0 +1,45 @@
+{
+  "content": [
+    "This Agreement (this ",
+    {
+      "definition": "Agreement"
+    },
+    " is made effective as of the date the last ",
+    {
+      "use": "Party"
+    },
+    " signs this ",
+    {
+      "use": "Agreement"
+    },
+    " (the ",
+    {
+      "definition": "Effective Date"
+    },
+    ") by and between ",
+    {
+      "blank": "Company's Name"
+    },
+    ", a ",
+    {
+      "blank": "Company's Form of Organization"
+    },
+    " (",
+    {
+      "definition": "Company"
+    },
+    ") and the several purchasers named in ",
+    {
+      "reference": "Purchasers"
+    },
+    " (",
+    {
+      "definition": "Purchasers"
+    },
+    ", and together with Company, each a ",
+    {
+      "definition": "Party"
+    },
+    ")."
+  ]
+}
