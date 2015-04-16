@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "chai": "^2.2.0",
-    "concat-stream": "^1.4.8",
     "istanbul": "^0.3.13",
     "jscs": "^1.12.0",
     "jshint": "^2.7.0",
