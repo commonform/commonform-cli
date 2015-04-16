@@ -11,7 +11,7 @@ require(lib)(
   process.stderr,
   process.env,
   process.argv.slice(2),
-  function(exitCode) {
-    process.exit(exitCode);
+  function(status) {
+    process.exit(status);
   }
 );

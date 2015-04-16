@@ -1,37 +1,41 @@
 /* jshint mocha: true */
 var expect = require('chai').expect;
+var invoke = require('./helpers/invoke');
+var version = require('../package.json').version;
 var cli = require('..');
-
-var streambuffers = require('stream-buffers');
-var WritableStreamBuffer = streambuffers.WritableStreamBuffer;
-
-var meta = require('../package.json');
-var emptyEnv = {};
 
 describe('Version', function() {
   describe('commonform --version', function() {
-    it('shows the package version', function(done) {
-      var output = new WritableStreamBuffer();
-      var args = ['--version'];
-      cli(null, output, null, emptyEnv, args, function(exitCode) {
-        expect(exitCode)
-          .to.equal(0);
-        expect(output.getContentsAsString('utf8'))
-          .to.equal(meta.version + '\n');
+    var inputs = {args:['--version']};
+
+    it('writes the package version to standard output', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.stdout).to.equal(version + '\n');
+        done();
+      });
+    });
+
+    it('exits with code 0', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.status).to.equal(0);
         done();
       });
     });
   });
 
   describe('commonform -v', function() {
-    it('shows the package version', function(done) {
-      var output = new WritableStreamBuffer();
-      var args = ['-v'];
-      cli(null, output, null, emptyEnv, args, function(exitCode) {
-        expect(exitCode)
-          .to.equal(0);
-        expect(output.getContentsAsString('utf8'))
-          .to.equal(meta.version + '\n');
+    var inputs = {args:['-v']};
+
+    it('writes the package version to standard output', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.stdout).to.equal(version + '\n');
+        done();
+      });
+    });
+
+    it('exits with code 0', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.status).to.equal(0);
         done();
       });
     });
