@@ -13,7 +13,7 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         callback(0);
       });
     };
-  } else if (opt.read) {
+  } else if (opt.render) {
     return function(callback) {
       require('./read-form')(stdin, opt, function(error, form) {
         var format = opt['--format'];

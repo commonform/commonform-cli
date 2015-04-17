@@ -4,7 +4,7 @@ Usage:
   commonform [--usage]
   commonform hash
   commonform lint
-  commonform read [options]
+  commonform render [options]
   commonform --help | -h
   commonform --version | -v
 

@@ -5,7 +5,7 @@ var fs = require('fs');
 var fixture = require('./helpers/fixture');
 var cli = require('..');
 
-describe('Read', function() {
+describe('Render', function() {
   var jsonFile = fixture('simple.json');
   var markupFile = fixture('simple.commonform');
   var markup = fs.readFileSync(markupFile).toString();
@@ -13,9 +13,9 @@ describe('Read', function() {
   var terminalANSI = fs.readFileSync(fixture('simple.ansi'))
     .toString();
 
-  describe('read < simple.json', function() {
+  describe('render < simple.json', function() {
     var inputs = {
-      argv:['read'],
+      argv:['render'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
     };
 
@@ -34,9 +34,9 @@ describe('Read', function() {
     });
   });
 
-  describe('read --format terminal < simple.json', function() {
+  describe('render --format terminal < simple.json', function() {
     var inputs = {
-      argv:['read', '--format', 'terminal'],
+      argv:['render', '--format', 'terminal'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
     };
 
@@ -55,9 +55,9 @@ describe('Read', function() {
     });
   });
 
-  describe('read --format markup < simple.json', function() {
+  describe('render --format markup < simple.json', function() {
     var inputs = {
-      argv:['read', '--format', 'markup'],
+      argv:['render', '--format', 'markup'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
     };
 
@@ -76,12 +76,12 @@ describe('Read', function() {
     });
   });
 
-  describe('read --format native < simple.json', function() {
+  describe('render --format native < simple.json', function() {
     var jsonString = fs.readFileSync(jsonFile);
     var roundTrippedJSON = JSON.stringify(JSON.parse(jsonString));
 
     var inputs = {
-      argv:['read', '--format', 'native'],
+      argv:['render', '--format', 'native'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
     };
 
@@ -100,9 +100,9 @@ describe('Read', function() {
     });
   });
 
-  describe('read --format invalid < simple.json', function() {
+  describe('render --format invalid < simple.json', function() {
     var inputs = {
-      argv:['read', '--format', 'invalid'],
+      argv:['render', '--format', 'invalid'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
     };
 
@@ -121,9 +121,9 @@ describe('Read', function() {
     });
   });
 
-  describe('read --format markup < simple.commonform', function() {
+  describe('render --format markup < simple.commonform', function() {
     var inputs = {
-      argv:['read', '--format', 'markup'],
+      argv:['render', '--format', 'markup'],
       stdin: fs.createReadStream.bind(fs, markupFile)
     };
 
