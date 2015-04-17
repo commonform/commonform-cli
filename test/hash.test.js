@@ -6,7 +6,7 @@ var fixture = require('./helpers/fixture');
 var cli = require('..');
 
 describe('Hash', function() {
-  var jsonFile = fixture('simple-form.json');
+  var jsonFile = fixture('simple.json');
   var digest =
     'e1be8b23320e37f7e4feb58293f5262139bbea2850ad507ce0ac72671aa19a75';
 
