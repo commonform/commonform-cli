@@ -34,6 +34,16 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         }
       });
     };
+  } else if (opt.lint) {
+    return function(callback) {
+      require('./read-form')(stdin, opt, function(error, form) {
+        var issues = require('commonform-lint')(form);
+        issues.forEach(function(issue) {
+          stdout.write(issue.message + '\n');
+        });
+        callback(issues.length === 0 ? 0 : 1);
+      });
+    };
   } else {
     return undefined;
   }
