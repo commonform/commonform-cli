@@ -1,4 +1,4 @@
-module.exports = function(format) {
+module.exports = function(format, opt) {
   if (format === 'markup') {
     var markup = require('commonform-markup');
     return function(argument) {
@@ -12,7 +12,14 @@ module.exports = function(format) {
     return function(argument) {
       return terminal(argument, {}) + '\n';
     };
+  } else if (format === 'docx') {
+    var docx = require('commonform-docx');
+    return function(argument) {
+      var title = opt['--title'] || 'Untitled';
+      var zip = docx(title, argument, {});
+      return zip.generate({type: 'nodebuffer'});
+    };
   } else {
-    return ['markup', 'native', 'terminal'];
+    return ['docx', 'markup', 'native', 'terminal'];
   }
 };

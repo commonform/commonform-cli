@@ -17,7 +17,7 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
     return function(callback) {
       require('./read-form')(stdin, opt, function(error, form) {
         var format = opt['--format'];
-        var transform = require('./transform-for-format')(format);
+        var transform = require('./transform-for-format')(format, opt);
         if (typeof transform === 'function') {
           stdout.write(transform(form));
           callback(0);

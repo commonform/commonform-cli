@@ -13,7 +13,7 @@ describe('Render', function() {
   var terminalANSI = fs.readFileSync(fixture('simple.ansi'))
     .toString();
 
-  describe('render < simple.json', function() {
+  describe('render < .json', function() {
     var inputs = {
       argv:['render'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
@@ -34,7 +34,7 @@ describe('Render', function() {
     });
   });
 
-  describe('render --format terminal < simple.json', function() {
+  describe('render --format terminal < .json', function() {
     var inputs = {
       argv:['render', '--format', 'terminal'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
@@ -55,7 +55,7 @@ describe('Render', function() {
     });
   });
 
-  describe('render --format markup < simple.json', function() {
+  describe('render --format markup < .json', function() {
     var inputs = {
       argv:['render', '--format', 'markup'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
@@ -76,7 +76,7 @@ describe('Render', function() {
     });
   });
 
-  describe('render --format native < simple.json', function() {
+  describe('render --format native < .json', function() {
     var jsonString = fs.readFileSync(jsonFile);
     var roundTrippedJSON = JSON.stringify(JSON.parse(jsonString));
 
@@ -100,7 +100,7 @@ describe('Render', function() {
     });
   });
 
-  describe('render --format invalid < simple.json', function() {
+  describe('render --format invalid < .json', function() {
     var inputs = {
       argv:['render', '--format', 'invalid'],
       stdin: fs.createReadStream.bind(fs, jsonFile)
@@ -121,7 +121,7 @@ describe('Render', function() {
     });
   });
 
-  describe('render --format markup < simple.commonform', function() {
+  describe('render --format markup < .commonform', function() {
     var inputs = {
       argv:['render', '--format', 'markup'],
       stdin: fs.createReadStream.bind(fs, markupFile)
@@ -130,6 +130,49 @@ describe('Render', function() {
     it('writes the markup to standard output', function(done) {
       invoke(cli, inputs, function(outputs) {
         expect(outputs.stdout).to.equal(markup);
+        done();
+      });
+    });
+
+    it('exits with status 0', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.status).to.equal(0);
+        done();
+      });
+    });
+  });
+
+  describe('render --format docx < .commonform', function() {
+    var inputs = {
+      argv:['render', '--format', 'docx'],
+      stdin: fs.createReadStream.bind(fs, markupFile)
+    };
+
+    it('writes the markup to standard output', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.stdout.length).to.be.greaterThan(0);
+        done();
+      });
+    });
+
+    it('exits with status 0', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.status).to.equal(0);
+        done();
+      });
+    });
+  });
+
+  describe('render --format docx --title < .commonform', function() {
+    var title = 'Agreement Title';
+    var inputs = {
+      argv:['render', '--format', 'docx', '--title', title],
+      stdin: fs.createReadStream.bind(fs, markupFile)
+    };
+
+    it('writes the markup to standard output', function(done) {
+      invoke(cli, inputs, function(outputs) {
+        expect(outputs.stdout).to.include(title);
         done();
       });
     });
