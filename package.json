@@ -39,10 +39,10 @@
   "preferGlobal": true,
   "repository": "commonform/commonform-cli",
   "scripts": {
-    "coverage": "istanbul cover _mocha && istanbul check-coverage coverage/coverage.json",
-    "lint": "jscs source test && jshint source test",
-    "pre-commit": "npm run lint && npm run coverage",
-    "test": "mocha",
-    "travis-ci": "npm run pre-commit"
+    "coverage": "istanbul check-coverage --config .dotfiles/istanbul.yml coverage/coverage.json",
+    "lint": "jshint --config .dotfiles/jshint.json source test && jscs --config .dotfiles/jscs.json source test",
+    "precommit": "npm run lint && npm run coverage",
+    "precoverage": "istanbul cover --config .dotfiles/istanbul.yml -- _mocha --opts .dotfiles/mocha.opts",
+    "test": "mocha --opts .dotfiles/mocha.opts"
   }
 }
