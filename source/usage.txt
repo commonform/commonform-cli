@@ -2,6 +2,7 @@ Compose, verify, and share form contracts
 
 Usage:
   commonform [--usage]
+  commonform critique
   commonform hash
   commonform lint
   commonform render [options]
