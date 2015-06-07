@@ -1,96 +1,63 @@
-/* jshint mocha: true */
-var expect = require('chai').expect;
+var test = require('tape');
 var invoke = require('./helpers/invoke');
 var cli = require('..');
 
-describe('Usage', function() {
-  describe('--help', function() {
-    var inputs = {argv:['--help']};
-
-    it('writes usage to standard output', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stdout).to.include('Usage:');
-        done();
-      });
-    });
-
-    it('exits with status 0', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(0);
-        done();
-      });
-    });
+test('--help', function(test) {
+  invoke(cli, {argv:['--help']}, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('Usage:') > -1, true,
+      '--help writes usage to standard output');
+    test.equal(
+      outputs.status, 0,
+      '--help exits with status 0');
+    test.end();
   });
+});
 
-  describe('-h', function() {
-    var inputs = {argv:['-h']};
-
-    it('writes usage to standard output', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stdout).to.include('Usage:');
-        done();
-      });
-    });
-
-    it('exits with status 0', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(0);
-        done();
-      });
-    });
+test('-h', function(test) {
+  invoke(cli, {arv:['-h']}, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('Usage:') > -1, true,
+      '-h writes usage to standard output');
+    test.equal(
+      outputs.status, 0,
+      '-h exits with status 0');
+    test.end();
   });
+});
 
-  describe('--usage', function() {
-    var inputs = {argv:['--usage']};
-
-    it('writes usage to standard output', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stdout).to.include('Usage:');
-        done();
-      });
-    });
-
-    it('exits with status 0', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(0);
-        done();
-      });
-    });
+test('--usage', function(test) {
+  invoke(cli, {argv:['--usage']}, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('Usage:') > -1, true,
+      '--usage writes usage to standard output');
+    test.equal(
+      outputs.status, 0,
+      '--usage exits with status 0');
+    test.end();
   });
+});
 
-  describe('(without arguments)', function() {
-    var inputs = {};
-
-    it('writes usage to standard output', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stdout).to.include('Usage:');
-        done();
-      });
-    });
-
-    it('exits with status 0', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(0);
-        done();
-      });
-    });
+test('(without arguments)', function(test) {
+  invoke(cli, {}, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('Usage:') > -1, true,
+      '(without arguments) writes usage to standard output');
+    test.equal(
+      outputs.status, 0,
+      '(without arguments) exits with status 0');
+    test.end();
   });
+});
 
-  describe('(with bogus arguments)', function() {
-    var inputs = {argv: ['bogus']};
-
-    it('writes usage on standard error', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stderr).to.include('Usage:');
-        done();
-      });
-    });
-
-    it('exits with status 1', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(1);
-        done();
-      });
-    });
+test('(with bogus arguments)', function(test) {
+  invoke(cli, {argv:['bogus']}, function(outputs) {
+    test.equal(
+      outputs.stderr.indexOf('Usage:') > -1, true,
+      '(with bogus arguments) writes usage on standard error');
+    test.equal(
+      outputs.status, 1,
+      '(with bogus arguments) exits with status 1');
+    test.end();
   });
 });

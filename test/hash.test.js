@@ -1,33 +1,24 @@
-/* jshint mocha: true */
-var expect = require('chai').expect;
-var invoke = require('./helpers/invoke');
 var fs = require('fs');
+var test = require('tape');
 var fixture = require('./helpers/fixture');
+var invoke = require('./helpers/invoke');
 var cli = require('..');
 
-describe('Hash', function() {
-  var jsonFile = fixture('simple.json');
+test('hash', function(test) {
   var digest =
     'e1be8b23320e37f7e4feb58293f5262139bbea2850ad507ce0ac72671aa19a75';
-
-  describe('hash < example.json', function() {
-    var inputs = {
-      argv:['hash'],
-      stdin: fs.createReadStream.bind(fs, jsonFile)
-    };
-
-    it('writes the digest to standard output', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stdout).to.equal(digest + '\n');
-        done();
-      });
-    });
-
-    it('exits with status 0', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(0);
-        done();
-      });
-    });
+  var input = {
+    argv:['hash'],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.json'));
+    }};
+  invoke(cli, input, function(outputs) {
+    test.equal(
+      outputs.stdout, digest + '\n',
+      'hash < example.json writes the digest to standard output');
+    test.equal(
+      outputs.status, 0,
+      'hash < example.json exits with status 0');
+    test.end();
   });
 });

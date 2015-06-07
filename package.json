@@ -20,13 +20,12 @@
     "english-list": "^1.0.0-prerelease-1"
   },
   "devDependencies": {
-    "chai": "^2.2.0",
-    "istanbul": "^0.3.13",
+    "istanbul": "~0.3.14",
     "jscs": "^1.12.0",
     "jshint": "^2.7.0",
-    "mocha": "^2.2.4",
     "object-assign": "^2.0.0",
-    "stream-buffers": "^2.1.0"
+    "stream-buffers": "^2.1.0",
+    "tape": "~4.0.0"
   },
   "homepage": "https://commonform.github.io",
   "keywords": [
@@ -43,7 +42,7 @@
     "coverage": "istanbul check-coverage coverage/coverage.json",
     "lint": "jshint source test && jscs source test",
     "precommit": "npm run lint && npm run coverage",
-    "precoverage": "istanbul cover -- _mocha",
-    "test": "mocha"
+    "precoverage": "istanbul cover -- tape test/*.test.js",
+    "test": "tape test/*.test.js"
   }
 }

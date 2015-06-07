@@ -1,4 +1,4 @@
-var expect = require('chai').expect;
+var assert = require('assert');
 var assign = require('object-assign');
 var streambuffers = require('stream-buffers');
 var WritableStreamBuffer = streambuffers.WritableStreamBuffer;
@@ -7,8 +7,9 @@ var ReadableStreamBuffer = streambuffers.ReadableStreamBuffer;
 var streams = ['stdin', 'stdout', 'stderr'];
 
 module.exports = function(cli, customInputs, callback) {
+  var defaultInput = new ReadableStreamBuffer();
   var inputs = {
-    stdin: new ReadableStreamBuffer(),
+    stdin: defaultInput,
     stdout: new WritableStreamBuffer(),
     stderr: new WritableStreamBuffer(),
     env: {},
@@ -20,9 +21,10 @@ module.exports = function(cli, customInputs, callback) {
       inputs[key] = inputs[key]();
     }
     inputs[key].end = function() {
-      expect.fail(0, 1, '.end() was called on ' + key);
+      assert.ifError(new Error('.end() was called on ' + key));
     };
   });
+  defaultInput.destroySoon();
   cli(
     inputs.stdin,
     inputs.stdout,

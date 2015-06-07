@@ -1,54 +1,39 @@
-/* jshint mocha: true */
-var expect = require('chai').expect;
 var fs = require('fs');
-
-var invoke = require('./helpers/invoke');
+var test = require('tape');
 var fixture = require('./helpers/fixture');
+var invoke = require('./helpers/invoke');
 var cli = require('..');
 
-describe('Critique', function() {
-  var jsonFile = fixture('archaic.json');
-
-  describe('critique < archaic.json', function() {
-    var inputs = {
-      argv:['critique'],
-      stdin: fs.createReadStream.bind(fs, jsonFile)
-    };
-
-    it('reports an archaic phrase', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stdout).to.include('"to wit"');
-        done();
-      });
-    });
-
-    it('exits with status 1', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(1);
-        done();
-      });
-    });
+test('critique < archaic.json', function(test) {
+  var inputs = {
+    argv:['critique'],
+    stdin: function() {
+      return fs.createReadStream(fixture('archaic.json'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('"to wit"') > -1, true,
+      'critique < archaic.json reports an archaic phrase');
+    test.equal(
+      outputs.status, 1,
+      'critique < archaic.json exits with status 1');
+    test.end();
   });
+});
 
-  describe('critique < clean.json', function() {
-    var jsonFile = fixture('clean.json');
-    var inputs = {
-      argv:['critique'],
-      stdin: fs.createReadStream.bind(fs, jsonFile)
-    };
-
-    it('reports no errors', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.stdout).to.equal(false);
-        done();
-      });
-    });
-
-    it('exits with status 0', function(done) {
-      invoke(cli, inputs, function(outputs) {
-        expect(outputs.status).to.equal(0);
-        done();
-      });
-    });
+test('critique < clean.json', function(test) {
+  var inputs = {
+    argv:['critique'],
+    stdin: function() {
+      return fs.createReadStream(fixture('clean.json'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout, false,
+      'critique < clean.json reports no errors');
+    test.equal(
+      outputs.status, 0,
+      'critique < clean.json exits with status 0');
+    test.end();
   });
 });
