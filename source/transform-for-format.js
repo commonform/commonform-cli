@@ -10,7 +10,12 @@ module.exports = function(format, opt) {
   } else if (format === 'terminal') {
     var terminal = require('commonform-terminal');
     return function(argument) {
-      return terminal(argument, {}) + '\n';
+      var blanks = {};
+      var path = opt['--blanks'];
+      if (path) {
+        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      }
+      return terminal(argument, blanks) + '\n';
     };
   } else if (format === 'docx') {
     var docx = require('commonform-docx');

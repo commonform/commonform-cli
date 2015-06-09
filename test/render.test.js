@@ -40,6 +40,27 @@ test('render --format terminal', function(test) {
   });
 });
 
+test('render --format terminal --blanks', function(test) {
+  var inputs = {
+    argv: [
+      'render',
+      '--format', 'terminal',
+      '--blanks', fixture('blanks.json')
+    ],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.commonform'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('NewCo') > -1, true,
+      'render --format docx writes the markup to standard output');
+    test.equal(
+      outputs.status, 0,
+      'render --format docx exits with status 0');
+    test.end();
+  });
+});
+
 test('render --format markup', function(test) {
   var inputs = {
     argv:['render', '--format', 'markup'],
