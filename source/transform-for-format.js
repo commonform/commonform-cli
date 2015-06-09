@@ -17,6 +17,16 @@ module.exports = function(format, opt) {
       }
       return terminal(argument, blanks) + '\n';
     };
+  } else if (format === 'tex') {
+    var tex = require('commonform-tex');
+    return function(argument) {
+      var blanks = {};
+      var path = opt['--blanks'];
+      if (path) {
+        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      }
+      return tex(argument, blanks) + '\n';
+    };
   } else if (format === 'docx') {
     var docx = require('commonform-docx');
     return function(argument) {
