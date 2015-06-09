@@ -16,7 +16,12 @@ module.exports = function(format, opt) {
     var docx = require('commonform-docx');
     return function(argument) {
       var title = opt['--title'] || 'Untitled';
-      var zip = docx(title, argument, {});
+      var blanks = {};
+      var path = opt['--blanks'];
+      if (path) {
+        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      }
+      var zip = docx(title, argument, blanks);
       return zip.generate({type: 'nodebuffer'});
     };
   } else {

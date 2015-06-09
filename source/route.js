@@ -19,8 +19,13 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         var format = opt['--format'];
         var transform = require('./transform-for-format')(format, opt);
         if (typeof transform === 'function') {
-          stdout.write(transform(form));
-          callback(0);
+          try {
+            stdout.write(transform(form));
+            callback(0);
+          } catch (e) {
+            stderr.write(e);
+            callback(1);
+          }
         } else {
           stderr.write([
             '"' + format + '" is not a valid format.',
