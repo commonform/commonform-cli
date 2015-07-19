@@ -1,0 +1,1 @@
+This Agreement \(this "**Agreement**" is made effective as of the date the last Party signs this Agreement \(the "**Effective Date**"\) by and between \_\_\_\_\_\_\_\_, a \_\_\_\_\_\_\_\_ \("**Company**"\) and the several purchasers named in Purchasers \("**Purchasers**", and together with Company, each a "**Party**"\).

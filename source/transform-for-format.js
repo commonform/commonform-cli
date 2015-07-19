@@ -39,7 +39,16 @@ module.exports = function(format, opt) {
       var zip = docx(title, argument, blanks);
       return zip.generate({type: 'nodebuffer'});
     };
+  } else if (format === 'markdown') {
+    return function(argument) {
+      var blanks = {};
+      var path = opt['--blanks'];
+      if (path) {
+        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      }
+      return require('commonform-markdown')(argument, blanks);
+    };
   } else {
-    return ['docx', 'markup', 'native', 'terminal'];
+    return ['docx', 'markdown', 'markup', 'native', 'terminal'];
   }
 };

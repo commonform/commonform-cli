@@ -1,0 +1,1 @@
+This Agreement \(this "**Agreement**" is made effective as of the date the last Party signs this Agreement \(the "**Effective Date**"\) by and between NewCo, Inc., a Delaware corporation \("**Company**"\) and the several purchasers named in Purchasers \("**Purchasers**", and together with Company, each a "**Party**"\).

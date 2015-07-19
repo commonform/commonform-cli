@@ -96,6 +96,7 @@ test('render --format tex --blanks', function(test) {
     test.end();
   });
 });
+
 test('render --format markup', function(test) {
   var inputs = {
     argv:['render', '--format', 'markup'],
@@ -235,6 +236,42 @@ test('render --format docx --blanks invalid.json', function(test) {
     test.equal(
       outputs.status, 1,
       'render --format docx exits with status 1');
+    test.end();
+  });
+});
+
+test('render --format markdown', function(test) {
+  var inputs = {
+    argv:['render', '--format', 'markdown'],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.md'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.length > 0, true,
+      'render --format markdown writes the markup to standard output');
+    test.equal(
+      outputs.status, 0,
+      'render --format markdown exits with status 0');
+    test.end();
+  });
+});
+
+test('render --format markdown --blanks', function(test) {
+  var inputs = {
+    argv: [
+      'render', '--format', 'markdown', '--blanks', fixture('blanks.json')
+    ],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple-with-blanks.md'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('NewCo') > -1, true,
+      'render --format markdown writes the markup to standard output');
+    test.equal(
+      outputs.status, 0,
+      'render --format markdown exits with status 0');
     test.end();
   });
 });
