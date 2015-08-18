@@ -17,6 +17,16 @@ module.exports = function(format, opt) {
       }
       return terminal(argument, blanks) + '\n';
     };
+  } else if (format === 'latex') {
+    var latex = require('commonform-latex');
+    return function(argument) {
+      var blanks = {};
+      var path = opt['--blanks'];
+      if (path) {
+        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      }
+      return latex(argument, blanks) + '\n';
+    };
   } else if (format === 'tex') {
     var tex = require('commonform-tex');
     return function(argument) {
@@ -49,6 +59,8 @@ module.exports = function(format, opt) {
       return require('commonform-markdown')(argument, blanks);
     };
   } else {
-    return ['docx', 'markdown', 'markup', 'native', 'terminal'];
+    return [
+      'docx', 'latex', 'markdown', 'markup', 'native', 'terminal', 'tex'
+    ].sort();
   }
 };

@@ -97,6 +97,42 @@ test('render --format tex --blanks', function(test) {
   });
 });
 
+test('render --format latex', function(test) {
+  var inputs = {
+    argv:['render', '--format', 'latex'],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.json'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('\\parindent') > -1, true,
+      'render --format latex writes latex to standard output');
+    test.equal(
+      outputs.status, 0,
+      'render --format latex exits with status 0');
+    test.end();
+  });
+});
+
+test('render --format latex --blanks', function(test) {
+  var inputs = {
+    argv: [
+      'render', '--format', 'latex', '--blanks', fixture('blanks.json')
+    ],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.commonform'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('NewCo') > -1, true,
+      'render --format docx writes blank values to standard output');
+    test.equal(
+      outputs.status, 0,
+      'render --format docx exits with status 0');
+    test.end();
+  });
+});
+
 test('render --format markup', function(test) {
   var inputs = {
     argv:['render', '--format', 'markup'],
