@@ -6,6 +6,7 @@ Usage:
   commonform hash
   commonform lint
   commonform render [options]
+  commonform share
   commonform --help | -h
   commonform --version | -v
 

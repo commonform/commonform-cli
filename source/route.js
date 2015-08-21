@@ -59,6 +59,34 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         callback(issues.length === 0 ? 0 : 1);
       });
     };
+  } else if (opt.share) {
+    return function(callback) {
+      require('./read-form')(stdin, opt, function(error, form) {
+        var options = {
+          hostname: 'api.commonform.org',
+          post: 443,
+          path: '/forms',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        var request = require('https')
+          .request(options, function(response) {
+            console.log(
+                'https://commonform.org/#' +
+                response.headers.location.replace('/forms/', '')
+            );
+            callback(0);
+          });
+        request
+          .on('error', function(error) {
+            console.error(error.message);
+            callback(1);
+          })
+          .end(JSON.stringify(form));
+      });
+    };
   } else {
     return undefined;
   }
