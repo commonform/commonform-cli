@@ -10,6 +10,7 @@
   "dependencies": {
     "commonform-critique": "0.5.x",
     "commonform-docx": "^0.5.1",
+    "commonform-html": "^0.1.0",
     "commonform-latex": "^0.1.0",
     "commonform-lint": "0.5.x",
     "commonform-markdown": "^0.1.1",

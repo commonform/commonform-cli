@@ -17,6 +17,26 @@ module.exports = function(format, opt) {
       }
       return terminal(argument, blanks) + '\n';
     };
+  } else if (format === 'html') {
+    var html = require('commonform-html');
+    return function(argument) {
+      var blanks = {};
+      var path = opt['--blanks'];
+      if (path) {
+        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      }
+      return html(argument, blanks) + '\n';
+    };
+  } else if (format === 'html5') {
+    var html = require('commonform-html');
+    return function(argument) {
+      var blanks = {};
+      var path = opt['--blanks'];
+      if (path) {
+        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      }
+      return html(argument, blanks, {html5: true}) + '\n';
+    };
   } else if (format === 'latex') {
     var latex = require('commonform-latex');
     return function(argument) {
@@ -60,7 +80,8 @@ module.exports = function(format, opt) {
     };
   } else {
     return [
-      'docx', 'latex', 'markdown', 'markup', 'native', 'terminal', 'tex'
+      'docx', 'html', 'html5', 'latex', 'markdown', 'markup', 'native',
+      'terminal', 'tex'
     ].sort();
   }
 };

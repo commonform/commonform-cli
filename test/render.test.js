@@ -311,3 +311,39 @@ test('render --format markdown --blanks', function(test) {
     test.end();
   });
 });
+
+test('render --format html', function(test) {
+  var inputs = {
+    argv:['render', '--format', 'html'],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.json'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout,
+      fs.readFileSync(fixture('simple.html')).toString(),
+      'render --format html writes HTML to standard output');
+    test.equal(
+      outputs.status, 0,
+      'render --format markup exits with status 0');
+    test.end();
+  });
+});
+
+test('render --format html5', function(test) {
+  var inputs = {
+    argv:['render', '--format', 'html5'],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.json'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout,
+      fs.readFileSync(fixture('simple.html5')).toString(),
+      'render --format html5 writes HTML5 to standard output');
+    test.equal(
+      outputs.status, 0,
+      'render --format markup exits with status 0');
+    test.end();
+  });
+});
