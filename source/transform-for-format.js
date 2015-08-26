@@ -66,7 +66,7 @@ module.exports = function(format, opt) {
       if (path) {
         blanks = JSON.parse(require('fs').readFileSync(path).toString());
       }
-      var zip = docx(title, argument, blanks);
+      var zip = docx(argument, blanks, { title: title });
       return zip.generate({type: 'nodebuffer'});
     };
   } else if (format === 'markdown') {

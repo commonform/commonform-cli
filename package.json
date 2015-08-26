@@ -9,7 +9,7 @@
   "bugs": "https://github.com/commonform/commonform-cli/issues",
   "dependencies": {
     "commonform-critique": "0.5.x",
-    "commonform-docx": "^0.6.1",
+    "commonform-docx": "^0.7.0",
     "commonform-html": "^0.1.0",
     "commonform-latex": "^0.2.0",
     "commonform-lint": "0.5.x",
