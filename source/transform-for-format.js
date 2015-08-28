@@ -22,20 +22,28 @@ module.exports = function(format, opt) {
     return function(argument) {
       var blanks = {};
       var path = opt['--blanks'];
+      var options = {};
+      if ('--title' in opt) {
+        options.title = opt['--title'];
+      }
       if (path) {
         blanks = JSON.parse(require('fs').readFileSync(path).toString());
       }
-      return html(argument, blanks) + '\n';
+      return html(argument, blanks, options) + '\n';
     };
   } else if (format === 'html5') {
     var html = require('commonform-html');
     return function(argument) {
       var blanks = {};
       var path = opt['--blanks'];
+      var options = {html5: true};
+      if ('--title' in opt) {
+        options.title = opt['--title'];
+      }
       if (path) {
         blanks = JSON.parse(require('fs').readFileSync(path).toString());
       }
-      return html(argument, blanks, {html5: true}) + '\n';
+      return html(argument, blanks, options) + '\n';
     };
   } else if (format === 'latex') {
     var latex = require('commonform-latex');
