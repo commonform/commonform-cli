@@ -15,3 +15,4 @@ Options:
   -t TITLE, --title TITLE     Form title to be rendered
   -b BLANKS, --blanks BLANKS  File containing fill-in-the-blank values
   -f FORMAT, --format FORMAT  Output format [default: terminal]
+  -n STYLE, --number STYLE    Numbering style [default: decimal]

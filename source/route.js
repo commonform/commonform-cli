@@ -15,6 +15,25 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
     };
   } else if (opt.render) {
     return function(callback) {
+      var numberStyle = opt['--number'];
+      var styles = require('./numberings');
+      if (!styles.hasOwnProperty(numberStyle)) {
+        stderr.write([
+          '"' + numberStyle + '" is not a valid numbering style.',
+          'Valid styles are ' +
+          require('english-list')(
+            'and',
+            Object.keys(styles).map(function(s) {
+              return '"' + s + '"';
+            })
+          ) +
+          '.'
+        ].join('\n') + '\n');
+        callback(1);
+        return;
+      } else {
+        opt.numbering = require(styles[numberStyle])
+      }
       require('./read-form')(stdin, opt, function(error, form) {
         var format = opt['--format'];
         var transform = require('./transform-for-format')(format, opt);
@@ -23,7 +42,7 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
             stdout.write(transform(form));
             callback(0);
           } catch (e) {
-            stderr.write(e);
+            stderr.write(e.message);
             callback(1);
           }
         } else {
