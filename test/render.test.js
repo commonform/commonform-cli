@@ -347,3 +347,24 @@ test('render --format html5', function(test) {
     test.end();
   });
 });
+
+
+test('render --format docx --number nonexistent', function(test) {
+  var inputs = {
+    argv:['render', '--format', 'docx', '--number', 'nonexistent'],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.json'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.ok(
+      outputs.stderr
+        .indexOf('"nonexistent" is not a valid numbering style') > -1,
+      'writes an error');
+    test.equal(
+      outputs.status, 1,
+      'exits with status 1');
+    test.end();
+  });
+});
+
+
