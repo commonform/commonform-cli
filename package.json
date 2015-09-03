@@ -8,6 +8,7 @@
   },
   "bugs": "https://github.com/commonform/commonform-cli/issues",
   "dependencies": {
+    "agreement-schedules-exhibits-numbering": "~0.1.1",
     "commonform-critique": "0.5.x",
     "commonform-docx": "~0.8.0",
     "commonform-html": "^0.1.0",
