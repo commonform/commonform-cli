@@ -23,9 +23,6 @@ module.exports = function(format, opt) {
       var blanks = {};
       var path = opt['--blanks'];
       var options = {};
-      if ('--title' in opt) {
-        options.title = opt['--title'];
-      }
       if (path) {
         blanks = JSON.parse(require('fs').readFileSync(path).toString());
       }
@@ -37,9 +34,6 @@ module.exports = function(format, opt) {
       var blanks = {};
       var path = opt['--blanks'];
       var options = {html5: true};
-      if ('--title' in opt) {
-        options.title = opt['--title'];
-      }
       if (path) {
         blanks = JSON.parse(require('fs').readFileSync(path).toString());
       }
