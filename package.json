@@ -10,7 +10,7 @@
   "dependencies": {
     "agreement-schedules-exhibits-numbering": "~0.1.1",
     "commonform-critique": "0.5.x",
-    "commonform-docx": "~0.8.0",
+    "commonform-docx": "~0.9.0",
     "commonform-html": "^0.1.0",
     "commonform-latex": "^0.2.0",
     "commonform-lint": "0.5.x",
@@ -21,10 +21,10 @@
     "commonform-terminal": "^0.6.0",
     "commonform-tex": "^0.3.0",
     "concat-stream": "^1.4.8",
-    "decimal-numbering": "~1.1.0",
+    "decimal-numbering": "~1.2.0",
     "docopt": "^0.6.2",
     "english-list": "^1.0.0-prerelease-1",
-    "outline-numbering": "~0.1.1"
+    "outline-numbering": "~0.2.0"
   },
   "devDependencies": {
     "istanbul": "~0.3.14",
