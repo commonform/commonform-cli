@@ -24,7 +24,8 @@
     "decimal-numbering": "~1.2.0",
     "docopt": "^0.6.2",
     "english-list": "^1.0.0-prerelease-1",
-    "outline-numbering": "~0.2.0"
+    "outline-numbering": "~0.2.0",
+    "resolutions-schedules-exhibits-numbering": "~0.1.0"
   },
   "devDependencies": {
     "istanbul": "~0.3.14",
