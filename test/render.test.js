@@ -53,10 +53,12 @@ test('render --format terminal --blanks', function(test) {
   invoke(cli, inputs, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('NewCo') > -1, true,
-      'render --format docx writes blank values to standard output');
+      'render --format terminal --blanks ' +
+      'writes blank values to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format docx exits with status 0');
+      'render --format terminal --blanks ' +
+      'exits with status 0');
     test.end();
   });
 });
@@ -89,10 +91,12 @@ test('render --format tex --blanks', function(test) {
   invoke(cli, inputs, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('NewCo') > -1, true,
-      'render --format docx writes blank values to standard output');
+      'render --format tex --blanks ' +
+      'writes blank values to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format docx exits with status 0');
+      'render --format tex --blanks ' +
+      'exits with status 0');
     test.end();
   });
 });
@@ -125,10 +129,12 @@ test('render --format latex --blanks', function(test) {
   invoke(cli, inputs, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('NewCo') > -1, true,
-      'render --format docx writes blank values to standard output');
+      'render --format latex --blanks ' +
+      'writes blank values to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format docx exits with status 0');
+      'render --format latex --blanks ' +
+      'exits with status 0');
     test.end();
   });
 });
@@ -233,10 +239,12 @@ test('render --format docx --title', function(test) {
   invoke(cli, inputs, function(outputs) {
     test.equal(
       outputs.stdout.indexOf(title) > -1, true,
-      'render --format docx writes the markup to standard output');
+      'render --format docx --title ' +
+      'writes the markup to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format docx exits with status 0');
+      'render --format docx --title ' +
+      'exits with status 0');
     test.end();
   });
 });
@@ -252,10 +260,12 @@ test('render --format docx --blanks', function(test) {
   invoke(cli, inputs, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('NewCo') > -1, true,
-      'render --format docx writes the markup to standard output');
+      'render --format docx --blanks ' +
+      'writes the markup to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format docx exits with status 0');
+      'render --format docx --blanks ' +
+      'exits with status 0');
     test.end();
   });
 });
@@ -271,7 +281,7 @@ test('render --format docx --blanks invalid.json', function(test) {
   invoke(cli, inputs, function(outputs) {
     test.equal(
       outputs.status, 1,
-      'render --format docx exits with status 1');
+      'render --format docx --blanks exits with status 1');
     test.end();
   });
 });
@@ -296,7 +306,9 @@ test('render --format markdown', function(test) {
 test('render --format markdown --blanks', function(test) {
   var inputs = {
     argv: [
-      'render', '--format', 'markdown', '--blanks', fixture('blanks.json')
+      'render',
+      '--format', 'markdown',
+      '--blanks', fixture('blanks.json')
     ],
     stdin: function() {
       return fs.createReadStream(fixture('simple-with-blanks.md'));
@@ -304,10 +316,12 @@ test('render --format markdown --blanks', function(test) {
   invoke(cli, inputs, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('NewCo') > -1, true,
-      'render --format markdown writes the markup to standard output');
+      'render --format markdown --blanks ' +
+      'writes the markup to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format markdown exits with status 0');
+      'render --format markdown --blanks ' +
+      'exits with status 0');
     test.end();
   });
 });
@@ -343,10 +357,10 @@ test('render --format html --blanks', function(test) {
     test.equal(
       outputs.stdout,
       fs.readFileSync(fixture('simple-with-blanks.html')).toString(),
-      'render --format html writes HTML to standard output');
+      'render --format html --blanks writes HTML to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format markup exits with status 0');
+      'render --format html --blanks exits with status 0');
     test.end();
   });
 });
@@ -364,7 +378,7 @@ test('render --format html5', function(test) {
       'render --format html5 writes HTML5 to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format markup exits with status 0');
+      'render --format html5 exits with status 0');
     test.end();
   });
 });
@@ -382,14 +396,13 @@ test('render --format html5 --blanks', function(test) {
     test.equal(
       outputs.stdout,
       fs.readFileSync(fixture('simple-with-blanks.html5')).toString(),
-      'render --format html5 writes HTML5 to standard output');
+      'render --format html5 --blanks writes HTML5 to standard output');
     test.equal(
       outputs.status, 0,
-      'render --format markup exits with status 0');
+      'render --format markup --blanks exits with status 0');
     test.end();
   });
 });
-
 
 test('render --format docx --number nonexistent', function(test) {
   var inputs = {
@@ -401,12 +414,10 @@ test('render --format docx --number nonexistent', function(test) {
     test.ok(
       outputs.stderr
         .indexOf('"nonexistent" is not a valid numbering style') > -1,
-      'writes an error');
+      'render --format docx --number nonexistent writes an error');
     test.equal(
       outputs.status, 1,
-      'exits with status 1');
+      'render --format docx --number nonexistent exits with status 1');
     test.end();
   });
 });
-
-
