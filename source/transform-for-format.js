@@ -29,7 +29,7 @@ module.exports = function(format, opt) {
       return html(argument, blanks, options) + '\n';
     };
   } else if (format === 'html5') {
-    var html = require('commonform-html');
+    var html5 = require('commonform-html');
     return function(argument) {
       var blanks = {};
       var path = opt['--blanks'];
@@ -37,7 +37,7 @@ module.exports = function(format, opt) {
       if (path) {
         blanks = JSON.parse(require('fs').readFileSync(path).toString());
       }
-      return html(argument, blanks, options) + '\n';
+      return html5(argument, blanks, options) + '\n';
     };
   } else if (format === 'latex') {
     var latex = require('commonform-latex');

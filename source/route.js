@@ -32,7 +32,7 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         callback(1);
         return;
       } else {
-        opt.numbering = require(styles[numberStyle])
+        opt.numbering = require(styles[numberStyle]);
       }
       require('./read-form')(stdin, opt, function(error, form) {
         var format = opt['--format'];
