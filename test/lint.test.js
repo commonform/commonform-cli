@@ -6,7 +6,7 @@ var cli = require('..');
 
 test('lint < problematic.json', function(test) {
   var inputs = {
-    argv:['lint'],
+    argv: ['lint'],
     stdin: function() {
       return fs.createReadStream(fixture('problematic.json'));
     }};
@@ -26,7 +26,7 @@ test('lint < problematic.json', function(test) {
 
 test('lint < clean.json', function(test) {
   var inputs = {
-    argv:['lint'],
+    argv: ['lint'],
     stdin: function() {
       return fs.createReadStream(fixture('clean.json'));
     }};

@@ -5,7 +5,7 @@ var cli = require('..');
 var version = meta.name + ' ' + meta.version;
 
 test('--version', function(test) {
-  invoke(cli, {argv:['--version']}, function(outputs) {
+  invoke(cli, {argv: ['--version']}, function(outputs) {
     test.equal(
       outputs.stdout, version + '\n',
       '--version writes the package version to standard output');

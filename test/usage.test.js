@@ -3,7 +3,7 @@ var invoke = require('./helpers/invoke');
 var cli = require('..');
 
 test('--help', function(test) {
-  invoke(cli, {argv:['--help']}, function(outputs) {
+  invoke(cli, {argv: ['--help']}, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('Usage:') > -1, true,
       '--help writes usage to standard output');
@@ -15,7 +15,7 @@ test('--help', function(test) {
 });
 
 test('-h', function(test) {
-  invoke(cli, {arv:['-h']}, function(outputs) {
+  invoke(cli, {arv: ['-h']}, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('Usage:') > -1, true,
       '-h writes usage to standard output');
@@ -27,7 +27,7 @@ test('-h', function(test) {
 });
 
 test('--usage', function(test) {
-  invoke(cli, {argv:['--usage']}, function(outputs) {
+  invoke(cli, {argv: ['--usage']}, function(outputs) {
     test.equal(
       outputs.stdout.indexOf('Usage:') > -1, true,
       '--usage writes usage to standard output');
@@ -51,7 +51,7 @@ test('(without arguments)', function(test) {
 });
 
 test('(with bogus arguments)', function(test) {
-  invoke(cli, {argv:['bogus']}, function(outputs) {
+  invoke(cli, {argv: ['bogus']}, function(outputs) {
     test.equal(
       outputs.stderr.indexOf('Usage:') > -1, true,
       '(with bogus arguments) writes usage on standard error');

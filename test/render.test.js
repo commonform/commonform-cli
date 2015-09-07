@@ -6,7 +6,7 @@ var cli = require('..');
 
 test('render < simple.json', function(test) {
   var inputs = {
-    argv:['render'],
+    argv: ['render'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -24,7 +24,7 @@ test('render < simple.json', function(test) {
 
 test('render --format terminal', function(test) {
   var inputs = {
-    argv:['render', '--format', 'terminal'],
+    argv: ['render', '--format', 'terminal'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -65,7 +65,7 @@ test('render --format terminal --blanks', function(test) {
 
 test('render --format tex', function(test) {
   var inputs = {
-    argv:['render', '--format', 'tex'],
+    argv: ['render', '--format', 'tex'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -103,7 +103,7 @@ test('render --format tex --blanks', function(test) {
 
 test('render --format latex', function(test) {
   var inputs = {
-    argv:['render', '--format', 'latex'],
+    argv: ['render', '--format', 'latex'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -141,7 +141,7 @@ test('render --format latex --blanks', function(test) {
 
 test('render --format markup', function(test) {
   var inputs = {
-    argv:['render', '--format', 'markup'],
+    argv: ['render', '--format', 'markup'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -159,7 +159,7 @@ test('render --format markup', function(test) {
 
 test('render --format native', function(test) {
   var inputs = {
-    argv:['render', '--format', 'native'],
+    argv: ['render', '--format', 'native'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -179,7 +179,7 @@ test('render --format native', function(test) {
 
 test('render --format invalid', function(test) {
   var inputs = {
-    argv:['render', '--format', 'invalid'],
+    argv: ['render', '--format', 'invalid'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -196,7 +196,7 @@ test('render --format invalid', function(test) {
 
 test('render --format markup', function(test) {
   var inputs = {
-    argv:['render', '--format', 'markup'],
+    argv: ['render', '--format', 'markup'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.commonform'));
     }};
@@ -214,7 +214,7 @@ test('render --format markup', function(test) {
 
 test('render --format docx', function(test) {
   var inputs = {
-    argv:['render', '--format', 'docx'],
+    argv: ['render', '--format', 'docx'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.commonform'));
     }};
@@ -232,7 +232,7 @@ test('render --format docx', function(test) {
 test('render --format docx --title', function(test) {
   var title = 'Agreement Title';
   var inputs = {
-    argv:['render', '--format', 'docx', '--title', title],
+    argv: ['render', '--format', 'docx', '--title', title],
     stdin: function() {
       return fs.createReadStream(fixture('simple.commonform'));
     }};
@@ -288,7 +288,7 @@ test('render --format docx --blanks invalid.json', function(test) {
 
 test('render --format markdown', function(test) {
   var inputs = {
-    argv:['render', '--format', 'markdown'],
+    argv: ['render', '--format', 'markdown'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.md'));
     }};
@@ -328,7 +328,7 @@ test('render --format markdown --blanks', function(test) {
 
 test('render --format html', function(test) {
   var inputs = {
-    argv:['render', '--format', 'html'],
+    argv: ['render', '--format', 'html'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -346,7 +346,7 @@ test('render --format html', function(test) {
 
 test('render --format html --blanks', function(test) {
   var inputs = {
-    argv:[
+    argv: [
       'render',
       '--format', 'html',
       '--blanks', fixture('blanks.json')],
@@ -367,7 +367,7 @@ test('render --format html --blanks', function(test) {
 
 test('render --format html5', function(test) {
   var inputs = {
-    argv:['render', '--format', 'html5'],
+    argv: ['render', '--format', 'html5'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};
@@ -385,7 +385,7 @@ test('render --format html5', function(test) {
 
 test('render --format html5 --blanks', function(test) {
   var inputs = {
-    argv:[
+    argv: [
       'render',
       '--format', 'html5',
       '--blanks', fixture('blanks.json')],
@@ -406,7 +406,7 @@ test('render --format html5 --blanks', function(test) {
 
 test('render --format docx --number nonexistent', function(test) {
   var inputs = {
-    argv:['render', '--format', 'docx', '--number', 'nonexistent'],
+    argv: ['render', '--format', 'docx', '--number', 'nonexistent'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};

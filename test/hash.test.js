@@ -8,7 +8,7 @@ test('hash', function(test) {
   var digest =
     'e1be8b23320e37f7e4feb58293f5262139bbea2850ad507ce0ac72671aa19a75';
   var input = {
-    argv:['hash'],
+    argv: ['hash'],
     stdin: function() {
       return fs.createReadStream(fixture('simple.json'));
     }};

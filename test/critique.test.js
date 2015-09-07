@@ -6,7 +6,7 @@ var cli = require('..');
 
 test('critique < archaic.json', function(test) {
   var inputs = {
-    argv:['critique'],
+    argv: ['critique'],
     stdin: function() {
       return fs.createReadStream(fixture('archaic.json'));
     }};
@@ -23,7 +23,7 @@ test('critique < archaic.json', function(test) {
 
 test('critique < clean.json', function(test) {
   var inputs = {
-    argv:['critique'],
+    argv: ['critique'],
     stdin: function() {
       return fs.createReadStream(fixture('clean.json'));
     }};
