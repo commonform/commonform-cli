@@ -33,7 +33,7 @@
     "jshint": "^2.7.0",
     "object-assign": "^4.0.1",
     "stream-buffers": "^2.1.0",
-    "tape": "~4.0.0"
+    "tape": "^4.2.0"
   },
   "homepage": "https://commonform.github.io",
   "keywords": [
