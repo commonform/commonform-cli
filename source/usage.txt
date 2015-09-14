@@ -4,6 +4,7 @@ Usage:
   commonform [--usage]
   commonform blanks
   commonform critique
+  commonform definitions
   commonform hash
   commonform lint
   commonform render [options]

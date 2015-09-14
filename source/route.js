@@ -17,9 +17,23 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
     return function(callback) {
       require('./read-form')(stdin, opt, function(error, form) {
         var analysis = require('commonform-analyze')(form);
-        Object.keys(analysis.blanks).forEach(function(blank) {
-          stdout.write(blank + '\n');
-        });
+        Object.keys(analysis.blanks)
+          .sort()
+          .forEach(function(blank) {
+            stdout.write(blank + '\n');
+          });
+        callback(0);
+      });
+    };
+  } else if (opt.definitions) {
+    return function(callback) {
+      require('./read-form')(stdin, opt, function(error, form) {
+        var analysis = require('commonform-analyze')(form);
+        Object.keys(analysis.definitions)
+          .sort()
+          .forEach(function(blank) {
+            stdout.write(blank + '\n');
+          });
         callback(0);
       });
     };
