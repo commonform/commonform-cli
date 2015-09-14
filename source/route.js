@@ -1,5 +1,22 @@
+var analyses = ['blanks', 'definitions'];
+
 module.exports = function(stdin, stdout, stderr, env, opt) {
-  if (opt['--version'] || opt['-v']) {
+  var analysis = require('array-find')(analyses, function(analysis) {
+    return opt.hasOwnProperty(analysis) && opt[analysis];
+  });
+  if (analysis) {
+    return function(callback) {
+      require('./read-form')(stdin, opt, function(error, form) {
+        var analysed = require('commonform-analyze')(form);
+        Object.keys(analysed[analysis])
+          .sort()
+          .forEach(function(element) {
+            stdout.write(element + '\n');
+          });
+        callback(0);
+      });
+    };
+  } else if (opt['--version'] || opt['-v']) {
     return function(callback) {
       var meta = require('../package.json');
       stdout.write(meta.name + ' ' + meta.version + '\n');
@@ -10,30 +27,6 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
       require('./read-form')(stdin, opt, function(error, form) {
         var normalized = require('commonform-normalize')(form);
         stdout.write(normalized.root + '\n');
-        callback(0);
-      });
-    };
-  } else if (opt.blanks) {
-    return function(callback) {
-      require('./read-form')(stdin, opt, function(error, form) {
-        var analysis = require('commonform-analyze')(form);
-        Object.keys(analysis.blanks)
-          .sort()
-          .forEach(function(blank) {
-            stdout.write(blank + '\n');
-          });
-        callback(0);
-      });
-    };
-  } else if (opt.definitions) {
-    return function(callback) {
-      require('./read-form')(stdin, opt, function(error, form) {
-        var analysis = require('commonform-analyze')(form);
-        Object.keys(analysis.definitions)
-          .sort()
-          .forEach(function(blank) {
-            stdout.write(blank + '\n');
-          });
         callback(0);
       });
     };
