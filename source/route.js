@@ -13,6 +13,16 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         callback(0);
       });
     };
+  } else if (opt.blanks) {
+    return function(callback) {
+      require('./read-form')(stdin, opt, function(error, form) {
+        var analysis = require('commonform-analyze')(form);
+        Object.keys(analysis.blanks).forEach(function(blank) {
+          stdout.write(blank + '\n');
+        });
+        callback(0);
+      });
+    };
   } else if (opt.render) {
     return function(callback) {
       var numberStyle = opt['--number'];
