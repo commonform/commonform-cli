@@ -1,4 +1,6 @@
-var analyses = ['blanks', 'definitions'];
+var analyses = [
+  'blanks', 'definitions', 'headings', 'references', 'uses'
+];
 
 module.exports = function(stdin, stdout, stderr, env, opt) {
   var analysis = require('array-find')(analyses, function(analysis) {
