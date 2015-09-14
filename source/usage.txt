@@ -6,9 +6,12 @@ Usage:
   commonform critique
   commonform definitions
   commonform hash
+  commonform headings
   commonform lint
+  commonform references
   commonform render [options]
   commonform share
+  commonform uses
   commonform --help | -h
   commonform --version | -v
 
