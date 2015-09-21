@@ -47,15 +47,29 @@ module.exports = function(format, opt) {
     return function(argument) {
       var title = opt['--title'];
       var blanks = {};
-      var path = opt['--blanks'];
-      if (path) {
-        blanks = JSON.parse(require('fs').readFileSync(path).toString());
+      var blanksPath = opt['--blanks'];
+      if (blanksPath) {
+        blanks = JSON.parse(
+          require('fs').readFileSync(blanksPath)
+            .toString());
+      }
+      var sigpages;
+      var sigpagesPath = opt['--signatures'];
+      if (sigpagesPath) {
+        sigpages = JSON.parse(
+          require('fs').readFileSync(sigpagesPath)
+            .toString());
       }
       var newline = (method.appendNewline ? '\n' : '');
       if (method.stringify) {
         return processor.stringify(argument) + newline;
       } else {
         var options = (method.options ? method.options : {});
+        if (format === 'docx' && sigpages) {
+          options.after = require('ooxml-signature-pages')(sigpages);
+        }
+        // console.error(options.after)
+        // process.exit(1)
         options.numbering = opt.numbering;
         options.title = title;
         var rendered = processor(argument, blanks, options);
