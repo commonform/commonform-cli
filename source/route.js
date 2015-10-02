@@ -97,6 +97,16 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         callback(issues.length === 0 ? 0 : 1);
       });
     };
+  } else if (opt.unmarked) {
+    return function(callback) {
+      require('./read-form')(stdin, opt, function(error, form) {
+        var issues = require('commonform-unmarked-uses')(form);
+        issues.forEach(function(issue) {
+          stdout.write(issue.message + '\n');
+        });
+        callback(issues.length === 0 ? 0 : 1);
+      });
+    };
   } else {
     return undefined;
   }

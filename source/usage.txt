@@ -11,6 +11,7 @@ Usage:
   commonform references
   commonform render [options]
   commonform share
+  commonform unmarked
   commonform uses
   commonform --help | -h
   commonform --version | -v
