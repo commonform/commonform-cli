@@ -22,8 +22,7 @@ var formats = {
     package: 'commonform-markdown'
   },
   markup: {
-    package: 'commonform-markup',
-    stringify: true,
+    package: 'commonform-markup-stringify',
     appendNewline: true
   },
   native: {
@@ -32,10 +31,6 @@ var formats = {
   },
   terminal: {
     package: 'commonform-terminal',
-    appendNewline: true
-  },
-  tex: {
-    package: 'commonform-tex',
     appendNewline: true
   }
 };
@@ -46,7 +41,7 @@ module.exports = function(format, opt) {
     var processor = require(method.package);
     return function(argument) {
       var title = opt['--title'];
-      var blanks = {};
+      var blanks = [];
       var blanksPath = opt['--blanks'];
       if (blanksPath) {
         blanks = JSON.parse(
@@ -68,8 +63,6 @@ module.exports = function(format, opt) {
         if (format === 'docx' && sigpages) {
           options.after = require('ooxml-signature-pages')(sigpages);
         }
-        // console.error(options.after)
-        // process.exit(1)
         options.numbering = opt.numbering;
         options.title = title;
         var rendered = processor(argument, blanks, options);

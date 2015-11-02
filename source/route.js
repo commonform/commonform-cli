@@ -1,5 +1,5 @@
 var analyses = [
-  'blanks', 'definitions', 'headings', 'references', 'uses'
+  'definitions', 'headings', 'references', 'uses'
 ];
 
 module.exports = function(stdin, stdout, stderr, env, opt) {
@@ -96,6 +96,21 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         });
         callback(issues.length === 0 ? 0 : 1);
       });
+    };
+  } else if (opt.blanks) {
+    return function(callback) {
+      stdin.pipe(require('concat-stream')(function(buffer) {
+        var input = buffer.toString();
+        var directions =
+          require('commonform-markup-parse')(input).directions
+        directions = directions.map(function(direction) {
+          return direction.identifier;
+        }).sort();
+        directions.forEach(function(direction) {
+          stdout.write(direction + '\n');
+        });
+        callback(0);
+      }));
     };
   } else {
     return undefined;

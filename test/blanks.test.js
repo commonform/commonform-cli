@@ -8,7 +8,7 @@ test('blanks', function(test) {
   var input = {
     argv: ['blanks'],
     stdin: function() {
-      return fs.createReadStream(fixture('simple.json'));
+      return fs.createReadStream(fixture('simple-with-directions.commonform'));
     }};
   invoke(cli, input, function(outputs) {
     test.equal(

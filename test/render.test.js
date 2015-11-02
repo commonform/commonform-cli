@@ -63,44 +63,6 @@ test('render --format terminal --blanks', function(test) {
   });
 });
 
-test('render --format tex', function(test) {
-  var inputs = {
-    argv: ['render', '--format', 'tex'],
-    stdin: function() {
-      return fs.createReadStream(fixture('simple.json'));
-    }};
-  invoke(cli, inputs, function(outputs) {
-    test.equal(
-      outputs.stdout.indexOf('\\parindent') > -1, true,
-      'render --format tex writes TeX to standard output');
-    test.equal(
-      outputs.status, 0,
-      'render --format tex exits with status 0');
-    test.end();
-  });
-});
-
-test('render --format tex --blanks', function(test) {
-  var inputs = {
-    argv: [
-      'render', '--format', 'tex', '--blanks', fixture('blanks.json')
-    ],
-    stdin: function() {
-      return fs.createReadStream(fixture('simple.commonform'));
-    }};
-  invoke(cli, inputs, function(outputs) {
-    test.equal(
-      outputs.stdout.indexOf('NewCo') > -1, true,
-      'render --format tex --blanks ' +
-      'writes blank values to standard output');
-    test.equal(
-      outputs.status, 0,
-      'render --format tex --blanks ' +
-      'exits with status 0');
-    test.end();
-  });
-});
-
 test('render --format latex', function(test) {
   var inputs = {
     argv: ['render', '--format', 'latex'],
@@ -290,7 +252,7 @@ test('render --format markdown', function(test) {
   var inputs = {
     argv: ['render', '--format', 'markdown'],
     stdin: function() {
-      return fs.createReadStream(fixture('simple.md'));
+      return fs.createReadStream(fixture('simple.json'));
     }};
   invoke(cli, inputs, function(outputs) {
     test.equal(
@@ -311,7 +273,7 @@ test('render --format markdown --blanks', function(test) {
       '--blanks', fixture('blanks.json')
     ],
     stdin: function() {
-      return fs.createReadStream(fixture('simple-with-blanks.md'));
+      return fs.createReadStream(fixture('simple.json'));
     }};
   invoke(cli, inputs, function(outputs) {
     test.equal(
