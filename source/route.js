@@ -102,7 +102,7 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
       stdin.pipe(require('concat-stream')(function(buffer) {
         var input = buffer.toString();
         var directions =
-          require('commonform-markup-parse')(input).directions
+          require('commonform-markup-parse')(input).directions;
         directions = directions.map(function(direction) {
           return direction.identifier;
         }).sort();

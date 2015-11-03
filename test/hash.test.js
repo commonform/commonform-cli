@@ -6,7 +6,7 @@ var cli = require('..');
 
 test('hash', function(test) {
   var digest =
-    'cbf7d6b15de25876d2739ef92fd07669275e631c69839cffbe70e64f69452dac'
+    'cbf7d6b15de25876d2739ef92fd07669275e631c69839cffbe70e64f69452dac';
   var input = {
     argv: ['hash'],
     stdin: function() {
