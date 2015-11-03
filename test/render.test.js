@@ -248,6 +248,22 @@ test('render --format docx --blanks invalid.json', function(test) {
   });
 });
 
+test('render --format docx --signatures', function(test) {
+  var inputs = {
+    argv: [
+      'render', '--format', 'docx', '--signatures', fixture('sigs.json')
+    ],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.commonform'));
+    }};
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.status, 0,
+      'render --format docx --signatures ' +
+      'exits with status 0');
+    test.end();
+  });
+});
 test('render --format markdown', function(test) {
   var inputs = {
     argv: ['render', '--format', 'markdown'],
