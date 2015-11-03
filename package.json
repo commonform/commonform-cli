@@ -32,8 +32,6 @@
   },
   "devDependencies": {
     "istanbul": "~0.3.14",
-    "jscs": "^2.1.1",
-    "jshint": "^2.7.0",
     "object-assign": "^4.0.1",
     "stream-buffers": "^2.1.0",
     "tape": "^4.2.0"
@@ -51,8 +49,7 @@
   "repository": "commonform/commonform-cli",
   "scripts": {
     "coverage": "FORCE_COLOR=true istanbul check-coverage coverage/coverage.json",
-    "lint": "jshint source test && jscs source test",
-    "precommit": "npm run lint && npm run coverage",
+    "precommit": "npm run coverage",
     "precoverage": "istanbul cover -- tape test/*.test.js",
     "test": "FORCE_COLOR=true tape test/*.test.js"
   }
