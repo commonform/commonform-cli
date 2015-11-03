@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-var path = require('path');
-var fs = require('fs');
+var path = require('path')
+var fs = require('fs')
 var lib = path.join(
   path.dirname(fs.realpathSync(__filename)),
-  '..', 'source', 'index'
-);
+  '..', 'source', 'index')
 require(lib)(
   process.stdin,
   process.stdout,
@@ -12,6 +11,4 @@ require(lib)(
   process.env,
   process.argv.slice(2),
   function(status) {
-    process.exit(status);
-  }
-);
+    process.exit(status) })
