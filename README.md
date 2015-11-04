@@ -10,7 +10,7 @@ npm --global install commonform-cli
 commonform --help
 ```
 
-`commonform-cli` is tested on the current stable version of [Node.js](https://nodejs.org). Please see the [Travis CI configuration file](./.travis.yml).
+`commonform-cli` is tested on the current Stable and Long Term Support (LTS) versions of [Node.js](https://nodejs.org). Please see the [Travis CI configuration file](./.travis.yml).
 
 Related Projects
 ================
