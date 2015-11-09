@@ -2,9 +2,9 @@ Compose, verify, and share form contracts
 
 Usage:
   commonform [--usage]
-  commonform blanks
   commonform critique
   commonform definitions
+  commonform directions
   commonform hash
   commonform headings
   commonform lint

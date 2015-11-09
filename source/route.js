@@ -75,17 +75,13 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         issues.forEach(function(issue) {
           stdout.write(issue.message + '\n') })
         callback(issues.length === 0 ? 0 : 1) }) } }
-  else if (opt.blanks) {
+  else if (opt.directions) {
     return function(callback) {
       stdin.pipe(require('concat-stream')(function(buffer) {
         var input = buffer.toString()
-        require('commonform-markup-parse')(input)
-          .directions
-          .map(function(direction) {
-            return direction.identifier })
-          .sort()
-          .forEach(function(direction) {
-            stdout.write(direction + '\n') })
+        stdout.write(
+          JSON.stringify(
+            require('commonform-markup-parse')(input).directions))
         callback(0) })) } }
   else {
     return undefined } }
