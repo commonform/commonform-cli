@@ -5,7 +5,7 @@ var formats = {
       return output.generate({ type: 'nodebuffer' }) } },
   html5: {
     package: 'commonform-html',
-    options: {html5: true},
+    options: { html5: true },
     appendNewline: true },
   html: {
     package: 'commonform-html',
@@ -45,14 +45,28 @@ module.exports = function(format, opt) {
             .toString()) }
       var newline = (method.appendNewline ? '\n' : '')
       if (method.stringify) {
-        return processor.stringify(argument) + newline }
+        return processor.stringify(argument.form) + newline }
       else {
         var options = ( method.options ? method.options : { } )
         if (format === 'docx' && sigpages) {
           options.after = require('ooxml-signature-pages')(sigpages) }
         options.numbering = opt.numbering
         options.title = title
-        var rendered = processor(argument, blanks, options)
+        if (argument.directions && !Array.isArray(blanks)) {
+          blanks =
+          Object.keys(blanks)
+            .reduce(function(output, key) {
+              var value = blanks[key]
+              argument.directions
+                .filter(function(direction) {
+                  return direction.identifier === key })
+                .forEach(function(direction) {
+                  output.push({
+                    blank: direction.path,
+                    value: value }) })
+              return output },
+              [ ]) }
+        var rendered = processor(argument.form, blanks, options)
         if (method.postprocess) {
           return method.postprocess(rendered) }
         else {

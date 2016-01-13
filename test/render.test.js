@@ -57,6 +57,26 @@ test('render --format terminal --blanks', function(test) {
       'exits with status 0')
     test.end() }) })
 
+test('render --format terminal --blanks (object)', function(test) {
+  var inputs = {
+    argv: [
+      'render',
+      '--format', 'terminal',
+      '--blanks', fixture('blanks-object.json') ],
+    stdin: function() {
+      return fs.createReadStream(
+        fixture('simple-with-directions.commonform')) }}
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('NewCo') > -1, true,
+      'render --format terminal --blanks (object) ' +
+      'writes blank values to standard output')
+    test.equal(
+      outputs.status, 0,
+      'render --format terminal --blanks (object) ' +
+      'exits with status 0')
+    test.end() }) })
+
 test('render --format latex', function(test) {
   var inputs = {
     argv: [ 'render', '--format', 'latex' ],

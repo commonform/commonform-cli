@@ -5,8 +5,8 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
     return opt.hasOwnProperty(analysis) && opt[analysis] })
   if (analysis) {
     return function(callback) {
-      require('./read-form')(stdin, opt, function(error, form) {
-        var analysed = require('commonform-analyze')(form)
+      require('./read-input')(stdin, opt, function(error, input) {
+        var analysed = require('commonform-analyze')(input.form)
         Object.keys(analysed[analysis])
           .sort()
           .forEach(function(element) {
@@ -19,11 +19,10 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
       callback(0) } }
   else if (opt.hash) {
     return function(callback) {
-      require('./read-form')(stdin, opt, function(error, form) {
-        var normalized = require('commonform-normalize')(form)
+      require('./read-input')(stdin, opt, function(error, input) {
+        var normalized = require('commonform-normalize')(input.form)
         stdout.write(normalized.root + '\n')
-        callback(0) }) }
-  }
+        callback(0) }) } }
   else if (opt.render) {
     return function(callback) {
       var numberStyle = opt['--number']
@@ -42,12 +41,12 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
         return }
       else {
         opt.numbering = require(styles[numberStyle]) }
-      require('./read-form')(stdin, opt, function(error, form) {
+      require('./read-input')(stdin, opt, function(error, input) {
         var format = opt['--format']
         var transform = require('./transform-for-format')(format, opt)
         if (typeof transform === 'function') {
           try {
-            stdout.write(transform(form))
+            stdout.write(transform(input))
             callback(0) }
           catch (e) {
             stderr.write(e.message)
@@ -63,15 +62,15 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
           callback(1) } }) } }
   else if (opt.lint) {
     return function(callback) {
-      require('./read-form')(stdin, opt, function(error, form) {
-        var issues = require('commonform-lint')(form)
+      require('./read-input')(stdin, opt, function(error, input) {
+        var issues = require('commonform-lint')(input.form)
         issues.forEach(function(issue) {
           stdout.write(issue.message + '\n') })
         callback(issues.length === 0 ? 0 : 1) }) } }
   else if (opt.critique) {
     return function(callback) {
-      require('./read-form')(stdin, opt, function(error, form) {
-        var issues = require('commonform-critique')(form)
+      require('./read-input')(stdin, opt, function(error, input) {
+        var issues = require('commonform-critique')(input.form)
         issues.forEach(function(issue) {
           stdout.write(issue.message + '\n') })
         callback(issues.length === 0 ? 0 : 1) }) } }
