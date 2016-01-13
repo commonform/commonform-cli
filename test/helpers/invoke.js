@@ -20,7 +20,6 @@ module.exports = function(cli, customInputs, callback) {
       inputs[key] = inputs[key]() }
     inputs[key].end = function() {
       assert.ifError(new Error('.end() was called on ' + key)) } })
-  defaultInput.destroySoon()
   cli(
     inputs.stdin,
     inputs.stdout,
