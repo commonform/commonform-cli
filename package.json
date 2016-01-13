@@ -31,7 +31,7 @@
     "resolutions-schedules-exhibits-numbering": "~0.1.0"
   },
   "devDependencies": {
-    "istanbul": "~0.3.14",
+    "istanbul": "^0.4.2",
     "object-assign": "^4.0.1",
     "stream-buffers": "^2.1.0",
     "tape": "^4.2.0"
