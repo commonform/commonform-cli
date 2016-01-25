@@ -1,7 +1,6 @@
 Compose, verify, and share form contracts at the command line.
 
-Installation
-============
+# Installation
 
 At the command line, with [npm](https://npmjs.com) installed:
 
@@ -12,7 +11,6 @@ commonform --help
 
 `commonform-cli` is tested on the current Stable and Long Term Support (LTS) versions of [Node.js](https://nodejs.org). Please see the [Travis CI configuration file](./.travis.yml).
 
-Related Projects
-================
+# Related Projects
 
 For [Vim](https://github.com/commonform/vim-commonform) users there is also [vim-commonform](https://github.com/commonform/vim-commonform) with syntax highlighting and conveniences for Common Form markup.
