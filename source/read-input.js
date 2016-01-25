@@ -1,5 +1,9 @@
 module.exports = function(stdin, opt, callback) {
-  stdin.pipe(require('concat-stream')(function(buffer) {
+  var source = (
+    opt.FILE ?
+      require('fs').createReadStream(opt.FILE) :
+      stdin )
+  source.pipe(require('concat-stream')(function(buffer) {
     var input = buffer.toString()
     var transform = (
       input.trim()[0] === '{' ?

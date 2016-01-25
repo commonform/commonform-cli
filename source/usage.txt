@@ -2,16 +2,16 @@ Compose, verify, and share form contracts
 
 Usage:
   commonform [--usage]
-  commonform critique
-  commonform definitions
-  commonform directions
-  commonform hash
-  commonform headings
-  commonform lint
-  commonform references
-  commonform render [options]
-  commonform share
-  commonform uses
+  commonform critique [FILE]
+  commonform definitions [FILE]
+  commonform directions [FILE]
+  commonform hash [FILE]
+  commonform headings [FILE]
+  commonform lint [FILE]
+  commonform references [FILE]
+  commonform render [options] [FILE]
+  commonform share [FILE]
+  commonform uses [FILE]
   commonform --help | -h
   commonform --version | -v
 

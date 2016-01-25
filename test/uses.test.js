@@ -18,3 +18,16 @@ test('uses', function(test) {
       outputs.status, 0,
       'uses < example.json exits with status 0')
     test.end() }) })
+
+test('uses FILE', function(test) {
+  var input = {
+    argv: [ 'uses', fixture('simple.json') ] }
+  invoke(cli, input, function(outputs) {
+    test.equal(
+      outputs.stdout,
+      [ 'Agreement', 'Party' ].join('\n') + '\n',
+      'uses example.json writes used terms to output')
+    test.equal(
+      outputs.status, 0,
+      'uses example.json exits with status 0')
+    test.end() }) })
