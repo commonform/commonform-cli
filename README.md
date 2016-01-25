@@ -44,10 +44,16 @@ To check a form for technical errors:
 $ commonform lint SAFE-MFN.commonform
 ```
 
-And to view automated style critiques:
+To view automated style critiques:
 
 ```shellsession
 $ commonform critique IBM-Cloud-Services-Agreement.commonform
+```
+
+To hash a form:
+
+```shellsession
+$ commonform hash Contract-Standards-TOS.commonform
 ```
 
 To see a list of additional subcommands and their options:
