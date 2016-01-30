@@ -10,7 +10,7 @@ Usage:
   commonform lint [FILE]
   commonform references [FILE]
   commonform render [options] [FILE]
-  commonform share [FILE]
+  commonform share [FILE] [--open]
   commonform uses [FILE]
   commonform --help | -h
   commonform --version | -v
@@ -21,4 +21,5 @@ Options:
   -b BLANKS, --blanks BLANKS    File containing fill-in-the-blank values
   -f FORMAT, --format FORMAT    Output format [default: terminal]
   -n STYLE, --number STYLE      Numbering style [default: decimal]
+  -o, --open                    Open shared form in your web browser
   -s PAGES, --signatures PAGES  Signature page data

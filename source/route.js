@@ -92,10 +92,11 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
           path: '/forms' }
         https.request(request, function(response) {
           if (response.statusCode === 200) {
-            stdout.write(
-              'https://api.commonform.org' +
-              response.headers.location +
-              '\n')
+            var location = response.headers.location
+            stdout.write('https://api.commonform.org' + location + '\n')
+            /* istanbul ignore if */
+            if (opt['--open']) {
+              require('opener')('https://commonform.org' + location) }
             callback(0) }
           else {
             stderr.write(
