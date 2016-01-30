@@ -82,5 +82,26 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
           JSON.stringify(
             require('commonform-markup-parse')(input).directions))
         callback(0) })) } }
+  else if (opt.share) {
+    return function(callback) {
+      require('./read-input')(stdin, opt, function(error, input) {
+        var https = require('https')
+        var request = {
+          method: 'POST',
+          host: 'api.commonform.org',
+          path: '/forms' }
+        https.request(request, function(response) {
+          if (response.statusCode === 200) {
+            stdout.write(
+              'https://api.commonform.org' +
+              response.headers.location +
+              '\n')
+            callback(0) }
+          else {
+            stderr.write(
+              'api.commonform.org responded ' +
+              response.statusCode)
+            callback(1) } })
+         .end(JSON.stringify(input.form)) }) } }
   else {
     return undefined } }
