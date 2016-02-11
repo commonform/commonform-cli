@@ -3,4 +3,5 @@ module.exports = {
   ase: 'agreement-schedules-exhibits-numbering',
   pae: 'plan-addenda-exhibits-numbering',
   decimal: 'decimal-numbering',
-  outline: 'outline-numbering' }
+  outline: 'outline-numbering',
+  aed: 'agreement-exhibits-decimal-numbering' }

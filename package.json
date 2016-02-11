@@ -9,6 +9,7 @@
   "bugs": "https://github.com/commonform/commonform-cli/issues",
   "dependencies": {
     "agreement-schedules-exhibits-numbering": "~0.1.1",
+    "agreement-exhibits-decimal-numbering": "anseljh/agreement-exhibits-decimal-numbering",
     "array-find": "^1.0.0",
     "commonform-analyze": "^0.4.3",
     "commonform-critique": "^0.8.1",
