@@ -35,7 +35,7 @@ $ commonform render --format docx Orrick-Mutual-NDA.commonform
 And with a title:
 
 ```shellsession
-$ commonform render --title "Mutual Nondisclosure Agrement" --format docx Orrick-Mutual-NDA.commonform
+$ commonform render --title "Mutual Nondisclosure Agreement" --format docx Orrick-Mutual-NDA.commonform
 ```
 
 To check a form for technical errors:
