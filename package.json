@@ -50,9 +50,9 @@
   "preferGlobal": true,
   "repository": "commonform/commonform-cli",
   "scripts": {
-    "coverage": "FORCE_COLOR=true istanbul check-coverage coverage/coverage.json",
+    "coverage": "istanbul check-coverage coverage/coverage.json",
     "precommit": "npm run coverage",
     "precoverage": "istanbul cover -- tape test/*.test.js",
-    "test": "FORCE_COLOR=true tape test/*.test.js"
+    "test": "tape test/*.test.js"
   }
 }
