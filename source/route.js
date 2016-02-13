@@ -91,7 +91,8 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
           host: 'api.commonform.org',
           path: '/forms' }
         https.request(request, function(response) {
-          if (response.statusCode === 200) {
+          var statusCode = response.statusCode
+          if (statusCode === 200 || statusCode === 201) {
             var location = response.headers.location
             stdout.write('https://api.commonform.org' + location + '\n')
             /* istanbul ignore if */
