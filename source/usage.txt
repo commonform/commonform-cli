@@ -8,6 +8,7 @@ Usage:
   commonform hash [FILE]
   commonform headings [FILE]
   commonform lint [FILE]
+  commonform publish USER PASSWORD PROJECT EDITION [FILE]
   commonform references [FILE]
   commonform render [options] [FILE]
   commonform share [FILE] [--open]
