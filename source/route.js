@@ -108,19 +108,27 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
   else if (opt.publish) {
     return function(callback) {
       require('./read-input')(stdin, opt, function(error, input) {
-        var hash = require('commonform-normalize')(input.form).root
-        require('commonform-publish')(
-          opt.USER,
-          opt.PASSWORD,
-          opt.PROJECT,
-          opt.EDITION,
-          hash,
-          function(error, location) {
-            if (error) {
-              stderr.write('Responded ' + error.statusCode + '\n')
-              callback(1) }
-            else {
-              stdout.write(location)
-              callback(0) } }) }) } }
+        var publisher = process.env.COMMONFORM_PUBLISHER
+        var password = process.env.COMMONFORM_PASSWORD
+        if (!publisher || !password) {
+          stderr.write(
+            'Set the variables COMMONFORM_PUBLISHER and ' +
+            'COMMONFORM_PASSWORD in your environment to publish.\n')
+          callback(1) }
+        else {
+          var hash = require('commonform-normalize')(input.form).root
+          require('commonform-publish')(
+            publisher,
+            password,
+            opt.PROJECT,
+            opt.EDITION,
+            hash,
+            function(error, location) {
+              if (error) {
+                stderr.write('Responded ' + error.statusCode + '\n')
+                callback(1) }
+              else {
+                stdout.write(location)
+                callback(0) } }) } }) } }
   else {
     return undefined } }

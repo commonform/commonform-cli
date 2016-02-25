@@ -20,7 +20,7 @@
     "commonform-markup-parse": "^0.4.0",
     "commonform-markup-stringify": "^0.1.0",
     "commonform-normalize": "^0.5.0",
-    "commonform-publish": "^1.0.2",
+    "commonform-publish": "^1.0.4",
     "commonform-serialize": "^0.4.0",
     "commonform-terminal": "^0.9.2",
     "concat-stream": "^1.4.8",
