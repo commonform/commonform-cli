@@ -56,6 +56,12 @@ To hash a form:
 $ commonform hash Contract-Standards-TOS.commonform
 ```
 
+To apply a different section-numbering scheme:
+
+```shellsession
+$ commonform render --title "Mutual Nondisclosure Agreement" --format docx --number decimal Orrick-Mutual-NDA.commonform
+```
+
 To see a list of additional subcommands and their options:
 
 ```shellsession
