@@ -85,26 +85,19 @@ module.exports = function(stdin, stdout, stderr, env, opt) {
   else if (opt.share) {
     return function(callback) {
       require('./read-input')(stdin, opt, function(error, input) {
-        var https = require('https')
-        var request = {
-          method: 'POST',
-          host: 'api.commonform.org',
-          path: '/forms' }
-        https.request(request, function(response) {
-          var statusCode = response.statusCode
-          if (statusCode === 200 || statusCode === 201) {
-            var location = response.headers.location
-            stdout.write('https://api.commonform.org' + location + '\n')
-            /* istanbul ignore if */
-            if (opt['--open']) {
-              require('opener')('https://commonform.org' + location) }
-            callback(0) }
-          else {
-            stderr.write(
-              'api.commonform.org responded ' +
-              response.statusCode)
-            callback(1) } })
-         .end(JSON.stringify(input.form)) }) } }
+        require('commonform-share')(
+          input.form,
+          function(error, location) {
+            var API = 'https://api.commonform.org'
+            if (error) {
+              stderr.write(API + ' responded ' + error.statusCode)
+              callback(1) }
+            else {
+              stdout.write(API + location + '\n')
+              /* istanbul ignore if */
+              if (opt['--open']) {
+                require('opener')(API + location) }
+              callback(0) } }) }) } }
   else if (opt.publish) {
     return function(callback) {
       require('./read-input')(stdin, opt, function(error, input) {

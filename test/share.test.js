@@ -26,7 +26,7 @@ test('share < malformed.json', function(test) {
       return fs.createReadStream(fixture('malformed.json')) }}
   invoke(cli, inputs, function(outputs) {
     test.equal(
-      outputs.stderr.trim(), 'api.commonform.org responded 400',
+      outputs.stderr.trim(), 'https://api.commonform.org responded 400',
       'share < malformed.json reports status code')
     test.equal(
       outputs.status, 1,

@@ -22,6 +22,7 @@
     "commonform-normalize": "^0.5.0",
     "commonform-publish": "^1.0.4",
     "commonform-serialize": "^0.4.0",
+    "commonform-share": "^1.0.2",
     "commonform-terminal": "^0.9.2",
     "concat-stream": "^1.4.8",
     "decimal-numbering": "^2.0.0",
