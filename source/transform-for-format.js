@@ -52,6 +52,7 @@ module.exports = function(format, opt) {
           options.after = require('ooxml-signature-pages')(sigpages) }
         options.numbering = opt.numbering
         options.title = title
+        options.indentMargins = opt['--indent-margins']
         if (argument.directions && !Array.isArray(blanks)) {
           blanks =
           Object.keys(blanks)

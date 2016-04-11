@@ -233,6 +233,25 @@ test('render --format docx --blanks', function(test) {
       'exits with status 0')
     test.end() }) })
 
+test('render --format docx --indent-margins', function(test) {
+  var inputs = {
+    argv: [
+      'render',
+      '--format', 'docx',
+      '--indent-margins' ],
+    stdin: function() {
+      return fs.createReadStream(fixture('simple.commonform')) }}
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout.indexOf('NewCo') > -1, true,
+      'render --format docx --indent-margins ' +
+      'writes the markup to standard output')
+    test.equal(
+      outputs.status, 0,
+      'render --format docx --indent-margins ' +
+      'exits with status 0')
+    test.end() }) })
+
 test('render --format docx --blanks invalid.json', function(test) {
   var inputs = {
     argv: [
