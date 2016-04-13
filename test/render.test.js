@@ -224,7 +224,7 @@ test('render --format docx --blanks', function(test) {
       return fs.createReadStream(fixture('simple.commonform')) }}
   invoke(cli, inputs, function(outputs) {
     test.equal(
-      outputs.stdout.indexOf('NewCo') > -1, true,
+      outputs.stdout.indexOf('Purchasers') > -1, true,
       'render --format docx --blanks ' +
       'writes the markup to standard output')
     test.equal(
@@ -243,7 +243,7 @@ test('render --format docx --indent-margins', function(test) {
       return fs.createReadStream(fixture('simple.commonform')) }}
   invoke(cli, inputs, function(outputs) {
     test.equal(
-      outputs.stdout.indexOf('NewCo') > -1, true,
+      outputs.stdout.indexOf('Purchasers') > -1, true,
       'render --format docx --indent-margins ' +
       'writes the markup to standard output')
     test.equal(
