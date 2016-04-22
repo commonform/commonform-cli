@@ -25,3 +25,4 @@ Options:
   -o, --open                    Open shared form in your web browser
   -s PAGES, --signatures PAGES  Signature page data
   -i, --indent-margins          Indent margins, commonwealth style
+  -l, --left-align-title        Align title flush to left margin
