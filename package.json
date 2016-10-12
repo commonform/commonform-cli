@@ -37,6 +37,7 @@
   "devDependencies": {
     "istanbul": "^0.4.2",
     "object-assign": "^4.0.1",
+    "standard": "^8.4.0",
     "stream-buffers": "^3.0.0",
     "tape": "^4.2.0"
   },
@@ -55,6 +56,7 @@
     "coverage": "istanbul check-coverage coverage/coverage.json",
     "precommit": "npm run coverage",
     "precoverage": "istanbul cover -- tape test/*.test.js",
-    "test": "tape test/*.test.js"
+    "test": "tape test/*.test.js",
+    "lint": "standard"
   }
 }
