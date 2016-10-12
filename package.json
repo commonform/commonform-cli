@@ -16,7 +16,7 @@
     "commonform-html": "^0.2.0",
     "commonform-latex": "^0.3.2",
     "commonform-lint": "^0.6.2",
-    "commonform-markdown": "^0.3.2",
+    "commonform-markdown": "^0.4.2",
     "commonform-markup-parse": "^0.4.0",
     "commonform-markup-stringify": "^0.1.0",
     "commonform-normalize": "^0.5.0",
