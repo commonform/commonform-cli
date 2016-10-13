@@ -112,28 +112,6 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
         callback(0)
       }))
     }
-  } else if (opt.share) {
-    return function (callback) {
-      require('./read-input')(stdin, opt, function (error, input) {
-        if (error) return callback(error)
-        require('commonform-share')(
-          input.form,
-          function (error, location) {
-            var API = 'https://api.commonform.org'
-            if (error) {
-              stderr.write(API + ' responded ' + error.statusCode)
-              callback(1)
-            } else {
-              stdout.write(API + location + '\n')
-              /* istanbul ignore if */
-              if (opt['--open']) {
-                require('opener')(API + location)
-              }
-              callback(0)
-            }
-          })
-      })
-    }
   } else if (opt.publish) {
     return function (callback) {
       require('./read-input')(stdin, opt, function (error, input) {
