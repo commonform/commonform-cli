@@ -23,6 +23,7 @@ Options:
   -f FORMAT, --format FORMAT    Output format [default: terminal]
   -n STYLE, --number STYLE      Numbering style [default: decimal]
   -o, --open                    Open shared form in your web browser
+  -p TEXT, --placeholder TEXT   Text for empty fill-in-the-blanks
   -s PAGES, --signatures PAGES  Signature page data
   -i, --indent-margins          Indent margins, commonwealth style
   -l, --left-align-title        Align title flush to left margin

@@ -54,6 +54,7 @@ module.exports = function(format, opt) {
         options.title = title
         options.indentMargins = opt['--indent-margins']
         options.centerTitle = !opt['--left-align-title']
+        options.blanks = opt['--placeholder']
         if (argument.directions && !Array.isArray(blanks)) {
           blanks =
           Object.keys(blanks)
