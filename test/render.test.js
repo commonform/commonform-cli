@@ -375,6 +375,26 @@ test('render --format html --blanks', function(test) {
       'exits with status 0')
     test.end() }) })
 
+test('render --format html --ordered-lists', function(test) {
+  var inputs = {
+    argv: [
+      'render',
+      '--format', 'html',
+      '--ordered-lists' ],
+    stdin: function() {
+      return fs.createReadStream(fixture('simplified-lists.json')) }}
+  invoke(cli, inputs, function(outputs) {
+    test.equal(
+      outputs.stdout,
+      fs.readFileSync(fixture('simplified-lists.html')).toString(),
+      'render --format html --ordered-lists ' +
+      'writes HTML to standard output')
+    test.equal(
+      outputs.status, 0,
+      'render --format html --ordered-lists ' +
+      'exits with status 0')
+    test.end() }) })
+
 test('render --format html5', function(test) {
   var inputs = {
     argv: [ 'render', '--format', 'html5' ],
