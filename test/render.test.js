@@ -81,7 +81,8 @@ test('render --format terminal --blanks (object)', function (test) {
     argv: [
       'render',
       '--format', 'terminal',
-      '--blanks', fixture('blanks-object.json') ],
+      '--blanks', fixture('blanks-object.json')
+    ],
     stdin: function () {
       return fs.createReadStream(
         fixture('simple-with-directions.commonform'))
@@ -290,7 +291,7 @@ test('render --format docx --title', function (test) {
   })
 })
 
-test('render --format docx --title --left-align-title', function (test) {
+test('render --format docx --left-align-title', function (test) {
   var title = 'Agreement Title'
   var inputs = {
     argv: [

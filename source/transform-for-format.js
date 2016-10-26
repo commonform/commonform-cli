@@ -41,19 +41,15 @@ module.exports = function (format, opt) {
     var processor = require(method.package)
     return function (argument) {
       var title = opt['--title']
-      var blanks = [ ]
+      var blanks = []
       var blanksPath = opt['--blanks']
       if (blanksPath) {
-        blanks = JSON.parse(
-          require('fs').readFileSync(blanksPath).toString()
-        )
+        blanks = JSON.parse(require('fs').readFileSync(blanksPath))
       }
       var sigpages
       var sigpagesPath = opt['--signatures']
       if (sigpagesPath) {
-        sigpages = JSON.parse(
-          require('fs').readFileSync(sigpagesPath).toString()
-        )
+        sigpages = JSON.parse(require('fs').readFileSync(sigpagesPath))
       }
       var newline = (method.appendNewline ? '\n' : '')
       if (method.stringify) {
