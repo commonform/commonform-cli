@@ -64,6 +64,9 @@ module.exports = function (format, opt) {
         options.indentMargins = opt['--indent-margins']
         options.centerTitle = !opt['--left-align-title']
         options.lists = opt['--ordered-lists']
+        if (opt['--blank-text']) {
+          options.blanks = opt['--blank-text']
+        }
         if (argument.directions && !Array.isArray(blanks)) {
           blanks = Object.keys(blanks)
             .reduce(function (output, key) {

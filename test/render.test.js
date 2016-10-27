@@ -345,6 +345,32 @@ test('render --format docx --blanks', function (test) {
   })
 })
 
+test('render --format docx --blank-text', function (test) {
+  var inputs = {
+    argv: [
+      'render',
+      '--format', 'docx',
+      '--blank-text', 'WRITE HERE'
+    ],
+    stdin: function () {
+      return fs.createReadStream(fixture('simple.commonform'))
+    }
+  }
+  invoke(cli, inputs, function (outputs) {
+    test.equal(
+      outputs.stdout.indexOf('WRITE HERE') > -1, true,
+      'render --format docx --blank-text ' +
+      'writes blank text to standard output'
+    )
+    test.equal(
+      outputs.status, 0,
+      'render --format docx --blank-text ' +
+      'exits with status 0'
+    )
+    test.end()
+  })
+})
+
 test('render --format docx --indent-margins', function (test) {
   var inputs = {
     argv: [
