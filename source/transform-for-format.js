@@ -60,7 +60,9 @@ module.exports = function (format, opt) {
           options.after = require('ooxml-signature-pages')(sigpages)
         }
         options.numbering = opt.numbering
-        options.title = title
+        if (title) {
+          options.title = title
+        }
         options.indentMargins = opt['--indent-margins']
         options.centerTitle = !opt['--left-align-title']
         options.lists = opt['--ordered-lists']
