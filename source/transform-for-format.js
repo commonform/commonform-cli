@@ -40,7 +40,6 @@ module.exports = function (format, opt) {
     var method = formats[format]
     var processor = require(method.package)
     return function (argument) {
-      var title = opt['--title']
       var blanks = []
       var blanksPath = opt['--blanks']
       if (blanksPath) {
@@ -60,8 +59,14 @@ module.exports = function (format, opt) {
           options.after = require('ooxml-signature-pages')(sigpages)
         }
         options.numbering = opt.numbering
-        if (title) {
-          options.title = title
+        if (opt['--title']) {
+          options.title = opt['--title']
+        }
+        if (opt['--edition']) {
+          options.edition = opt['--edition']
+        }
+        if (opt['--hash']) {
+          options.hash = true
         }
         options.indentMargins = opt['--indent-margins']
         options.centerTitle = !opt['--left-align-title']

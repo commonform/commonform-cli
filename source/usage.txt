@@ -18,6 +18,8 @@ Usage:
 Options:
   --color                       Colorize output
   -t TITLE, --title TITLE       Form title to be rendered
+  -e EDITION, --edition EDITION Form edition to be rendered
+  -H, --hash                    Render form hash
   -b BLANKS, --blanks BLANKS    File containing fill-in-the-blank values
   -p TEXT, --blank-text TEXT    Placeholder text for unfilled blanks
   -f FORMAT, --format FORMAT    Output format [default: terminal]
