@@ -74,6 +74,9 @@ module.exports = function (format, opt) {
         if (opt['--blank-text']) {
           options.blanks = opt['--blank-text']
         }
+        if (opt['--mark-filled']) {
+          options.markFilled = true
+        }
         if (argument.directions && !Array.isArray(blanks)) {
           blanks = Object.keys(blanks)
             .reduce(function (output, key) {

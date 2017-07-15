@@ -21,6 +21,7 @@ Options:
   -e EDITION, --edition EDITION Form edition to be rendered
   -H, --hash                    Render form hash
   -b BLANKS, --blanks BLANKS    File containing fill-in-the-blank values
+  -m , --mark-filled            Mark filled-in blanks
   -p TEXT, --blank-text TEXT    Placeholder text for unfilled blanks
   -f FORMAT, --format FORMAT    Output format [default: terminal]
   -n STYLE, --number STYLE      Numbering style [default: decimal]
