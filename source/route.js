@@ -112,6 +112,19 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
         callback(0)
       }))
     }
+  } else if (opt.blanks) {
+    return function (callback) {
+      require('./read-input')(stdin, opt, function (error, input) {
+        if (error) return callback(error)
+        input.directions
+          .map(function(d){return d.identifier})
+          .sort()
+          .forEach(function (element) {
+            stdout.write(element + '\n')
+          })
+        callback(0)
+      })
+    }
   } else if (opt.publish) {
     return function (callback) {
       require('./read-input')(stdin, opt, function (error, input) {
