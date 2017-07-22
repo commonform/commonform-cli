@@ -42,7 +42,12 @@ module.exports = function (format, opt) {
     return function (argument) {
       var blanks = []
       var blanksPath = opt['--blanks']
-      if (blanksPath) {
+      // usually we read the blanks JSON from disk
+      // but sometimes the caller hands it to us directly
+      if (opt.blanksObj) {
+        blanks = opt.blanksObj
+      }
+      else if (blanksPath) {
         blanks = JSON.parse(require('fs').readFileSync(blanksPath))
       }
       var sigpages
