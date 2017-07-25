@@ -24,7 +24,7 @@ test('directions < simple-with-directions.commonform', function (test) {
           path: ['content', 11]
         }
       ],
-      'directions reports an archaic phrase'
+      'directions shows expected blank identifiers'
     )
     test.equal(
       outputs.status, 0,

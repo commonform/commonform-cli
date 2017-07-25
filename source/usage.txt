@@ -2,16 +2,17 @@ Compose, verify, and share form contracts
 
 Usage:
   commonform [--usage]
-  commonform critique [FILE]
-  commonform definitions [FILE]
-  commonform directions [FILE]
-  commonform hash [FILE]
-  commonform headings [FILE]
-  commonform lint [FILE]
-  commonform publish PROJECT EDITION [FILE]
-  commonform references [FILE]
+  commonform headings     [FILE]
+  commonform references   [FILE]
+  commonform definitions  [FILE]
+  commonform uses         [FILE]
+  commonform blanks       [FILE]
+  commonform lint         [FILE]
+  commonform critique     [FILE]
+  commonform hash         [FILE]
   commonform render [options] [FILE]
-  commonform uses [FILE]
+  commonform publish PROJECT EDITION [FILE]
+  commonform directions   [ < FILE ]
   commonform --help | -h
   commonform --version | -v
 
@@ -20,8 +21,8 @@ Options:
   -t TITLE, --title TITLE       Form title to be rendered
   -e EDITION, --edition EDITION Form edition to be rendered
   -H, --hash                    Render form hash
-  -b BLANKS, --blanks BLANKS    File containing fill-in-the-blank values
-  -m , --mark-filled            Mark filled-in blanks
+  -b BLANKS, --blanks BLANKS    JSON file containing fill-in-the-blank values
+  -m, --mark-filled             Mark filled-in blanks
   -p TEXT, --blank-text TEXT    Placeholder text for unfilled blanks
   -f FORMAT, --format FORMAT    Output format [default: terminal]
   -n STYLE, --number STYLE      Numbering style [default: decimal]
@@ -29,3 +30,16 @@ Options:
   -i, --indent-margins          Indent margins, commonwealth style
   -l, --left-align-title        Align title flush to left margin
   -L, --ordered-lists           Render order lists in HTML output
+
+Commands:
+  headings       List of \ Headings \.
+  references     List of references to {Headings}.
+  definitions    List of ""Defined Terms"".
+  uses           List of uses of <Defined Terms>.
+  blanks         List of [Blanks] to be filled by a -b option JSON file.
+  lint           Warnings and errors.
+  critique       How might one improve the language? Ken Adams in a box.
+  hash           Cryptographic hash of the form.
+  render         Render the commonform to an output format.
+  publish        Publish the project.
+  directions     Internal: Details of blanks. NOTE! Expects STDIN, not a file.

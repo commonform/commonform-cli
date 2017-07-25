@@ -71,3 +71,9 @@ $ commonform --usage
 # Related Projects
 
 For [Vim](https://github.com/commonform/vim-commonform) users there is also [vim-commonform](https://github.com/commonform/vim-commonform) with syntax highlighting and conveniences for Common Form markup.
+
+# Schema Validation
+
+Does your context JSON fit the commonform? Are there unfilled blanks or type mismatches? You could define a JSON schema based on the form and validate the JSON against the schema. This functionality isn't part of the commonform-cli, and can be done separately by any number of schema validators. See the `cftemplate` repository for an example, in `examples/SAFE.schema.json`.
+
+
