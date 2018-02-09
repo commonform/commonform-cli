@@ -50,6 +50,11 @@ module.exports = function (format, opt) {
       if (sigpagesPath) {
         sigpages = JSON.parse(require('fs').readFileSync(sigpagesPath))
       }
+      var styles
+      var stylesPath = opt['--styles']
+      if (stylesPath) {
+        styles = JSON.parse(require('fs').readFileSync(stylesPath))
+      }
       var newline = (method.appendNewline ? '\n' : '')
       if (method.stringify) {
         return processor.stringify(argument.form) + newline
@@ -57,6 +62,9 @@ module.exports = function (format, opt) {
         var options = (method.options ? method.options : { })
         if (format === 'docx' && sigpages) {
           options.after = require('ooxml-signature-pages')(sigpages)
+        }
+        if (format === 'docx' && styles) {
+          options.styles = styles
         }
         options.numbering = opt.numbering
         if (opt['--title']) {

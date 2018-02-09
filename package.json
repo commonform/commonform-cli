@@ -12,7 +12,7 @@
     "array-find": "^1.0.0",
     "commonform-analyze": "^0.4.3",
     "commonform-critique": "^0.8.1",
-    "commonform-docx": "^1.3.0",
+    "commonform-docx": "^1.3.1",
     "commonform-html": "^1.1.0",
     "commonform-latex": "^0.3.2",
     "commonform-lint": "^0.6.2",
