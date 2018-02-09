@@ -429,9 +429,9 @@
       }
     },
     "commonform-markdown": {
-      "version": "1.2.1",
-      "resolved": "https://registry.npmjs.org/commonform-markdown/-/commonform-markdown-1.2.1.tgz",
-      "integrity": "sha512-XhWauyHsD8G6XzeiWNvrRSe65156PV2jD4rLgEuiv4sQa0frFWw0KTlhndDMR/hdaPyQDzQ1IBBC71e4o3NJ8w==",
+      "version": "1.2.2",
+      "resolved": "https://registry.npmjs.org/commonform-markdown/-/commonform-markdown-1.2.2.tgz",
+      "integrity": "sha512-Y3rBiAj/v866VAiMGQOXPYNHypVVze3HWd1hJqEQ8GhUeTIU0zjTD0VqUA1VF9YVoGSZyjznHOQKoWYdhJDUcQ==",
       "requires": {
         "commonform-flatten": "0.8.1",
         "commonform-group-series": "0.5.2",
