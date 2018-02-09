@@ -429,15 +429,16 @@
       }
     },
     "commonform-markdown": {
-      "version": "1.2.0",
-      "resolved": "https://registry.npmjs.org/commonform-markdown/-/commonform-markdown-1.2.0.tgz",
-      "integrity": "sha512-k54m3wlb6Y3zsRjqvU29PA3pUoea0YNnzWOrexLTiDrPeo9mjoDeQsg8/dzDgfy7XewoAeTYWNXeHSK1nZXelQ==",
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/commonform-markdown/-/commonform-markdown-1.2.1.tgz",
+      "integrity": "sha512-XhWauyHsD8G6XzeiWNvrRSe65156PV2jD4rLgEuiv4sQa0frFWw0KTlhndDMR/hdaPyQDzQ1IBBC71e4o3NJ8w==",
       "requires": {
         "commonform-flatten": "0.8.1",
         "commonform-group-series": "0.5.2",
         "commonform-hash": "0.4.3",
         "commonform-resolve": "1.0.0",
         "decimal-numbering": "1.2.0",
+        "docopt": "0.6.2",
         "markdown-escape": "1.0.2"
       },
       "dependencies": {
