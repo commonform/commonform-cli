@@ -27,7 +27,7 @@
     "decimal-numbering": "^2.0.0",
     "docopt": "^0.6.2",
     "english-list": "^1.0.0-prerelease-1",
-    "ooxml-signature-pages": "^0.7.0",
+    "ooxml-signature-pages": "^2.0.0",
     "outline-numbering": "^1.0.0",
     "plan-addenda-exhibits-numbering": "^2.0.0",
     "resolutions-schedules-exhibits-numbering": "~0.1.0"
