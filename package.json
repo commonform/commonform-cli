@@ -36,7 +36,7 @@
     "istanbul": "^0.4.2",
     "object-assign": "^4.0.1",
     "standard": "^8.4.0",
-    "stream-buffers": "^3.0.0",
+    "stream-buffers": "^3.0.2",
     "tape": "^4.2.0"
   },
   "homepage": "https://commonform.github.io",
