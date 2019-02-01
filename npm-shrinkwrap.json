@@ -403,9 +403,9 @@
       }
     },
     "commonform-html": {
-      "version": "1.1.0",
-      "resolved": "https://registry.npmjs.org/commonform-html/-/commonform-html-1.1.0.tgz",
-      "integrity": "sha512-kWQvKGCWhcHFrryqV771tOqaHpPA+B9peVjrsFx1YzR0zCB5w/OI3A9CevErvFMRvw2U4RZVNHrySxTpcNWDBg==",
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/commonform-html/-/commonform-html-2.0.0.tgz",
+      "integrity": "sha512-EtXaa+PaWSeOV/rMsvNcje2H5KhBTuxeoQVoFQLUw3a9DxzAAoJOXuAwmhi0GUUvzc5tns2CY4quJDLa4kFIPg==",
       "requires": {
         "commonform-group-series": "^0.5.0",
         "commonform-hash": "^0.4.3",
