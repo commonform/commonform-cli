@@ -2,12 +2,12 @@ var formats = {
   docx: {
     package: 'commonform-docx',
     postprocess: function (output) {
-      return output.generate({type: 'nodebuffer'})
+      return output.generate({ type: 'nodebuffer' })
     }
   },
   html5: {
     package: 'commonform-html',
-    options: {html5: true},
+    options: { html5: true },
     appendNewline: true
   },
   html: {

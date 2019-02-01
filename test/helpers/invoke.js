@@ -6,7 +6,7 @@ var ReadableStreamBuffer = streambuffers.ReadableStreamBuffer
 
 var streams = ['stdin', 'stdout', 'stderr']
 
-module.exports = function (cli, customInputs, callback) {
+module.exports = function (cli, customInputs, next) {
   var defaultInput = new ReadableStreamBuffer()
   var inputs = {
     stdin: defaultInput,
@@ -31,7 +31,7 @@ module.exports = function (cli, customInputs, callback) {
     inputs.env,
     inputs.argv,
     function (status) {
-      callback({
+      next({
         status: status,
         stdout: inputs.stdout.getContentsAsString('utf8'),
         stderr: inputs.stderr.getContentsAsString('utf8')

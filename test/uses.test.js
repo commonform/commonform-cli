@@ -26,7 +26,7 @@ test('uses', function (test) {
 })
 
 test('uses FILE', function (test) {
-  var input = {argv: ['uses', fixture('simple.json')]}
+  var input = { argv: ['uses', fixture('simple.json')] }
   invoke(cli, input, function (outputs) {
     test.equal(
       outputs.stdout,

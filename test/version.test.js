@@ -5,7 +5,7 @@ var cli = require('..')
 var version = (meta.name + ' ' + meta.version)
 
 test('--version', function (test) {
-  invoke(cli, {argv: ['--version']}, function (outputs) {
+  invoke(cli, { argv: ['--version'] }, function (outputs) {
     test.equal(
       outputs.stdout, version + '\n',
       '--version ' +
@@ -21,7 +21,7 @@ test('--version', function (test) {
 })
 
 test.test('-v', function (test) {
-  invoke(cli, {argv: ['-v']}, function (outputs) {
+  invoke(cli, { argv: ['-v'] }, function (outputs) {
     test.equal(
       outputs.stdout, version + '\n',
       '-v ' +

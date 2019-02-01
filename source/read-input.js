@@ -6,7 +6,7 @@ module.exports = function (stdin, opt, callback) {
     var input = buffer.toString()
     var transform = input.trim()[0] === '{'
       ? function (string) {
-        return {form: require('commonform-serialize').parse(string)}
+        return { form: require('commonform-serialize').parse(string) }
       }
       : function (string) {
         return require('commonform-markup-parse')(string)

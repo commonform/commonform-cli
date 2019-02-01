@@ -5,35 +5,35 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
     return opt.hasOwnProperty(analysis) && opt[analysis]
   })
   if (analysis) {
-    return function (callback) {
+    return function (next) {
       require('./read-input')(stdin, opt, function (error, input) {
-        if (error) return callback(error)
+        if (error) return next(error)
         var analysed = require('commonform-analyze')(input.form)
         Object.keys(analysed[analysis])
           .sort()
           .forEach(function (element) {
             stdout.write(element + '\n')
           })
-        callback(0)
+        next(0)
       })
     }
   } else if (opt['--version'] || opt['-v']) {
-    return function (callback) {
+    return function (next) {
       var meta = require('../package.json')
       stdout.write(meta.name + ' ' + meta.version + '\n')
-      callback(0)
+      next(0)
     }
   } else if (opt.hash) {
-    return function (callback) {
+    return function (next) {
       require('./read-input')(stdin, opt, function (error, input) {
-        if (error) return callback(error)
+        if (error) return next(error)
         var normalized = require('commonform-normalize')(input.form)
         stdout.write(normalized.root + '\n')
-        callback(0)
+        next(0)
       })
     }
   } else if (opt.render) {
-    return function (callback) {
+    return function (next) {
       var numberStyle = opt['--number']
       var styles = require('./numberings')
       if (!styles.hasOwnProperty(numberStyle)) {
@@ -48,22 +48,22 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
           ) +
           '.'
         ].join('\n') + '\n')
-        callback(1)
+        next(1)
         return
       } else {
         opt.numbering = require(styles[numberStyle])
       }
       require('./read-input')(stdin, opt, function (error, input) {
-        if (error) return callback(error)
+        if (error) return next(error)
         var format = opt['--format']
         var transform = require('./transform-for-format')(format, opt)
         if (typeof transform === 'function') {
           try {
             stdout.write(transform(input))
-            callback(0)
+            next(0)
           } catch (e) {
             stderr.write(e.message)
-            callback(1)
+            next(1)
           }
         } else {
           stderr.write([
@@ -74,34 +74,34 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
             })) +
             '.'
           ].join('\n') + '\n')
-          callback(1)
+          next(1)
         }
       })
     }
   } else if (opt.lint) {
-    return function (callback) {
+    return function (next) {
       require('./read-input')(stdin, opt, function (error, input) {
-        if (error) return callback(error)
+        if (error) return next(error)
         var issues = require('commonform-lint')(input.form)
         issues.forEach(function (issue) {
           stdout.write(issue.message + '\n')
         })
-        callback(issues.length === 0 ? 0 : 1)
+        next(issues.length === 0 ? 0 : 1)
       })
     }
   } else if (opt.critique) {
-    return function (callback) {
+    return function (next) {
       require('./read-input')(stdin, opt, function (error, input) {
-        if (error) return callback(error)
+        if (error) return next(error)
         var issues = require('commonform-critique')(input.form)
         issues.forEach(function (issue) {
           stdout.write(issue.message + '\n')
         })
-        callback(issues.length === 0 ? 0 : 1)
+        next(issues.length === 0 ? 0 : 1)
       })
     }
   } else if (opt.directions) {
-    return function (callback) {
+    return function (next) {
       stdin.pipe(require('concat-stream')(function (buffer) {
         var input = buffer.toString()
         stdout.write(
@@ -109,13 +109,13 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
             require('commonform-markup-parse')(input).directions
           )
         )
-        callback(0)
+        next(0)
       }))
     }
   } else if (opt.publish) {
-    return function (callback) {
+    return function (next) {
       require('./read-input')(stdin, opt, function (error, input) {
-        if (error) return callback(error)
+        if (error) return next(error)
         var publisher = process.env.COMMONFORM_PUBLISHER
         var password = process.env.COMMONFORM_PASSWORD
         if (!publisher || !password) {
@@ -123,7 +123,7 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
             'Set the variables COMMONFORM_PUBLISHER and ' +
             'COMMONFORM_PASSWORD in your environment to publish.\n'
           )
-          callback(1)
+          next(1)
         } else {
           var hash = require('commonform-normalize')(input.form).root
           require('commonform-publish')(
@@ -135,10 +135,10 @@ module.exports = function (stdin, stdout, stderr, env, opt) {
             function (error, location) {
               if (error) {
                 stderr.write('Responded ' + error.statusCode + '\n')
-                callback(1)
+                next(1)
               } else {
                 stdout.write(location)
-                callback(0)
+                next(0)
               }
             })
         }
