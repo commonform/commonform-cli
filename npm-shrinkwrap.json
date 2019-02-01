@@ -525,9 +525,9 @@
       }
     },
     "commonform-markup-stringify": {
-      "version": "0.1.1",
-      "resolved": "https://registry.npmjs.org/commonform-markup-stringify/-/commonform-markup-stringify-0.1.1.tgz",
-      "integrity": "sha1-u6a3Jn8Kg7lgciDTGJHQEyWTa58="
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/commonform-markup-stringify/-/commonform-markup-stringify-1.0.0.tgz",
+      "integrity": "sha1-MdswYVxArKoAfViABWUS/Kq5pZ8="
     },
     "commonform-mscd": {
       "version": "0.1.3",

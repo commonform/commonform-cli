@@ -18,7 +18,7 @@
     "commonform-lint": "^0.6.2",
     "commonform-markdown": "^1.2.3",
     "commonform-markup-parse": "^0.4.2",
-    "commonform-markup-stringify": "^0.1.0",
+    "commonform-markup-stringify": "^1.0.0",
     "commonform-normalize": "^0.5.0",
     "commonform-publish": "^2.0.0",
     "commonform-serialize": "^0.4.0",
