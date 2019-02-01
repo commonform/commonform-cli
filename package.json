@@ -10,7 +10,7 @@
   "dependencies": {
     "agreement-schedules-exhibits-numbering": "^1.0.0",
     "array-find": "^1.0.0",
-    "commonform-analyze": "^0.4.3",
+    "commonform-analyze": "^3.0.0",
     "commonform-critique": "^0.8.1",
     "commonform-docx": "^1.4.0",
     "commonform-html": "^2.0.0",
