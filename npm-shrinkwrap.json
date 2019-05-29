@@ -4,6 +4,11 @@
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
+    "@kemitchell/docopt": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/@kemitchell/docopt/-/docopt-1.0.0.tgz",
+      "integrity": "sha512-j6LvUorsk1dV7GW1rqLhmIgc1kUnQ2EEiw3UJNBX+E+chCbzhqeuXSwnBZBzTq7rQNiAROUPacwHu+t2mHLP0g=="
+    },
     "abbrev": {
       "version": "1.0.9",
       "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-1.0.9.tgz",
@@ -373,14 +378,20 @@
       }
     },
     "commonform-docx": {
-      "version": "1.4.0",
-      "resolved": "https://registry.npmjs.org/commonform-docx/-/commonform-docx-1.4.0.tgz",
-      "integrity": "sha512-MYXT7xXYmXNMdNsckwKytJaXo8uH0ydDA/hAAruXN/J/VwZRvIRVb+WBQ5e2yXGKPTZvggl2OueR/w4KyL/aQw==",
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/commonform-docx/-/commonform-docx-2.0.0.tgz",
+      "integrity": "sha512-lChd4b6+Ap3kFaO5rClZJKWZ9Lx+MObc7x/V/wWtx9n+Fb8G4b7zwYYZpiWt7TnQJGiTcyPuL4LFj+L58x103A==",
       "requires": {
+        "@kemitchell/docopt": "^1.0.0",
+        "agreement-schedules-exhibits-numbering": "^1.0.0",
         "commonform-flatten": "^0.8.0",
         "commonform-hash": "^0.4.3",
         "jszip": "^2.4.0",
-        "object-assign": "^4.1.1"
+        "object-assign": "^4.1.1",
+        "ooxml-signature-pages": "^2.0.1",
+        "outline-numbering": "^1.0.2",
+        "plan-addenda-exhibits-numbering": "^2.0.0",
+        "resolutions-schedules-exhibits-numbering": "^0.1.0"
       }
     },
     "commonform-fix-strings": {
@@ -1986,9 +1997,9 @@
       "dev": true
     },
     "pako": {
-      "version": "1.0.8",
-      "resolved": "https://registry.npmjs.org/pako/-/pako-1.0.8.tgz",
-      "integrity": "sha512-6i0HVbUfcKaTv+EG8ZTr75az7GFXcLYk9UyLEg7Notv/Ma+z/UG3TCoz6GiNeOrn1E/e63I0X/Hpw18jHOTUnA=="
+      "version": "1.0.10",
+      "resolved": "https://registry.npmjs.org/pako/-/pako-1.0.10.tgz",
+      "integrity": "sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw=="
     },
     "parse-json": {
       "version": "2.2.0",
