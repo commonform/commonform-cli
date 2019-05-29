@@ -1,7 +1,7 @@
 Contributing
 ============
 
-Thanks for your interest in [Common Form](http://commonform.github.io/)! All of the source code behind Common Form is written in [JavaScript](http://en.wikipedia.org/wiki/JavaScript), managed with [Git](http://git-scm.com), licensed under [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0), developed [on GitHub](https://github.com/commonform), and distributed via [npm](https://npmjs.com). Please have a look around and feel free to ask questions. Contributions of all kinds are welcome.
+Thanks for your interest in [Common Form](http://commonform.github.io/)! All of the source code behind Common Form is written in [JavaScript](http://en.wikipedia.org/wiki/JavaScript), managed with [Git](http://git-scm.com), licensed under [BlueOak-1.0.0](https://blueoakcouncil.org/license/1.0.0), developed [on GitHub](https://github.com/commonform), and distributed via [npm](https://npmjs.com). Please have a look around and feel free to ask questions. Contributions of all kinds are welcome.
 
 If you would like to contribute code, please [fork the GitHub repository](https://guides.github.com/activities/forking/) listed in [package.json](./package.json) within the package, also available via `npm show $PACKAGE_NAME repository.url`, then [start a new branch off `master`](https://guides.github.com/introduction/flow/). Something like `git checkout -b $YOUR_BRANCH master` should do the trick.
 

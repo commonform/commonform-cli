@@ -46,7 +46,7 @@
     "knowledge management",
     "law"
   ],
-  "license": "Apache-2.0",
+  "license": "BlueOak-1.0.0",
   "main": "source/index",
   "preferGlobal": true,
   "repository": "commonform/commonform-cli",
