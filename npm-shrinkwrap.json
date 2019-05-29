@@ -72,9 +72,9 @@
       "dev": true
     },
     "american-legal-archaisms": {
-      "version": "1.0.17",
-      "resolved": "https://registry.npmjs.org/american-legal-archaisms/-/american-legal-archaisms-1.0.17.tgz",
-      "integrity": "sha1-/HwahXeX6cKfunpQs950LO8T20E="
+      "version": "1.0.18",
+      "resolved": "https://registry.npmjs.org/american-legal-archaisms/-/american-legal-archaisms-1.0.18.tgz",
+      "integrity": "sha512-hPV3mDDUdhi5GZ4CC8tfcw/ddjj6xXJyDoUP00LJKpjT4hGlqXiijl9iDQSptNCDBQa66xgZSPYFCIUii2U5gg=="
     },
     "ansi-escapes": {
       "version": "3.2.0",
@@ -354,15 +354,22 @@
       }
     },
     "commonform-critique": {
-      "version": "0.8.1",
-      "resolved": "https://registry.npmjs.org/commonform-critique/-/commonform-critique-0.8.1.tgz",
-      "integrity": "sha1-T6I5oNhQrctYYbItBcF7/rcyjRk=",
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/commonform-critique/-/commonform-critique-1.0.0.tgz",
+      "integrity": "sha512-0QEOKrcyi48uPbYu/WjarwZdSE8xWD8geJ8esHdLb0/yUn4Pwsdexmxvek0oDVp9tATGfidx0dtkz9ERHFjr8A==",
       "requires": {
         "commonform-archaic": "^1.1.0",
         "commonform-mscd": "^0.1.0",
-        "commonform-predicate": "^0.4.0",
+        "commonform-predicate": "^2.0.0",
         "doubleplus-numbers": "^0.2.0",
-        "wordy-words": "^0.0.11"
+        "wordy-words": "0.0.20"
+      },
+      "dependencies": {
+        "commonform-predicate": {
+          "version": "2.0.0",
+          "resolved": "https://registry.npmjs.org/commonform-predicate/-/commonform-predicate-2.0.0.tgz",
+          "integrity": "sha512-HqdTSpSusxkedHDRTiaqwXhNlspYHiioQLJPYE3PgbU/WaZGdgXI21Fjz2FRrhNdiolarQGANAK1E9y2ul1hBw=="
+        }
       }
     },
     "commonform-docx": {
@@ -1818,9 +1825,9 @@
       "dev": true
     },
     "mscd": {
-      "version": "0.1.6",
-      "resolved": "https://registry.npmjs.org/mscd/-/mscd-0.1.6.tgz",
-      "integrity": "sha1-5cYM2gZ0xNVF4+Avd7R4UF+pupU="
+      "version": "0.1.7",
+      "resolved": "https://registry.npmjs.org/mscd/-/mscd-0.1.7.tgz",
+      "integrity": "sha512-jjdcvBCcBvAPxuexgGjEi0vlcdWNhsap9IuN7NVCI4IpmPQS/l5snnreXjHes0NUtFBwWjvm9I0+3t6q84ft8A=="
     },
     "mute-stream": {
       "version": "0.0.7",
@@ -2704,9 +2711,9 @@
       "dev": true
     },
     "wordy-words": {
-      "version": "0.0.11",
-      "resolved": "https://registry.npmjs.org/wordy-words/-/wordy-words-0.0.11.tgz",
-      "integrity": "sha1-szK+TOKhz/MYuM+/CEmrQ9ScJKI="
+      "version": "0.0.20",
+      "resolved": "https://registry.npmjs.org/wordy-words/-/wordy-words-0.0.20.tgz",
+      "integrity": "sha1-lvH6XWIWw5mBLXEHVvYDMCIMObQ="
     },
     "wrappy": {
       "version": "1.0.2",
