@@ -487,28 +487,11 @@
       }
     },
     "commonform-lint": {
-      "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/commonform-lint/-/commonform-lint-2.0.0.tgz",
-      "integrity": "sha512-Kh1ow8UWx+ilS1cpxSRmK+iK6wvZh3KSFdRBm0Yw3Oea++Vkfb2GNoKHyLq0uHbFyf+C7Q1tM/6YeHiaaL/eeg==",
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/commonform-lint/-/commonform-lint-3.0.0.tgz",
+      "integrity": "sha512-RTnVZ9q7rBRelLjOSrrFXdMYuo1wz5rvn80+TzOhWgWBL3tHlkbkI6z7FVK4GKQFfJ/pBDW3097AbNZBcsJuxg==",
       "requires": {
         "commonform-analyze": "^3.0.0"
-      },
-      "dependencies": {
-        "commonform-analyze": {
-          "version": "3.0.0",
-          "resolved": "https://registry.npmjs.org/commonform-analyze/-/commonform-analyze-3.0.0.tgz",
-          "integrity": "sha512-Nj4qRJIHJi9dypwXkG9cgS4gqQXTPxjg9aeVt+bPejufcLUnef3ei81KwFcup45lT8RgAv4oENAgub6AfLBweQ==",
-          "requires": {
-            "array-find": "^1.0.0",
-            "commonform-predicate": "^2.0.0",
-            "stringify-clone": "^2.0.0"
-          }
-        },
-        "commonform-predicate": {
-          "version": "2.0.0",
-          "resolved": "https://registry.npmjs.org/commonform-predicate/-/commonform-predicate-2.0.0.tgz",
-          "integrity": "sha512-HqdTSpSusxkedHDRTiaqwXhNlspYHiioQLJPYE3PgbU/WaZGdgXI21Fjz2FRrhNdiolarQGANAK1E9y2ul1hBw=="
-        }
       }
     },
     "commonform-markdown": {
